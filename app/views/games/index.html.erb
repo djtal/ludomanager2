@@ -1,0 +1,32 @@
+<div class="page-header">
+  <h1>Listing games</h1>
+</div>
+
+<% @games.each do |game| %>
+  <ul class="thumbnails">
+    <li class="span7 game">
+      <h4><%= game.name %></h4>
+      <div class='row'>
+        <div class="span3">
+          <img src="http://placehold.it/210x150" alt="">
+        </div>
+        <div class="span4">
+          <h5>Description</h5>
+          <p>My awsome description here</p>
+          <h5>Authors</h5>
+          <ul class="unstyled">
+            <li>Antoine Bauza</li>
+            <li>Bruno Cathala</li>
+          </ul>
+        </div>
+      </div>
+      <ul class="unstyled horizontal">
+        <li><i class='icon user'></i>Player : <%= game.min %> - <%= game.max %></li>
+        <li><i class='icon book'></i>Level : <%= game.level %></li>
+        <li><i class='icon time'></i>Time : About 1 hours long</li>
+      </ul>
+    </li>
+  </ul>
+<% end %>
+
+
