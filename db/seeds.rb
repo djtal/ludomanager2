@@ -7,3 +7,4 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Game.create([{name: 'Pandemie', min: 2, max: 5, level: 3}, {name: 'Castle Panic', min: 1, max: 6, level: 2 }])
+Game.create([{name: 'Caylus', min: 2, max: 5, level: 3}, {name: 'Ghost Storie', min: 1, max: 6, level: 2 }])

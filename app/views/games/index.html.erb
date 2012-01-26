@@ -10,24 +10,26 @@
   </ul>
 </div>
 
-<ul class="thumbnails">
+<div class='row'>
 <% @games.each do |game| %>
-    <li class="span5 game">
-      <h4><%= game.name %></h4>
-      <div class='row'>
-        <div class="span2">
-          <img src="http://placehold.it/210x150" alt="">
+    <div class="span6 game">
+      <div class='inner'>
+        <h4><%= link_to game.name, game_path(game) %></h4>
+        <div class='row'>
+          <div class="span2">
+            <%= image_tag "http://placehold.it/140x100" %>
+          </div>
+          <div class="span3">
+            <h5>Description</h5>
+            <p>My awsome description here</p>
+          </div>
         </div>
-        <div class="span3">
-          <h5>Description</h5>
-          <p>My awsome description here</p>
-        </div>
+        <ul class="unstyled horizontal">
+          <li><i class='icon user'></i>Player : <%= game.min %> - <%= game.max %></li>
+          <li><i class='icon book'></i>Level : <%= game.level %></li>
+          <li><i class='icon time'></i>Time : About 1 hours long</li>
+        </ul>
       </div>
-      <ul class="unstyled horizontal">
-        <li><i class='icon user'></i>Player : <%= game.min %> - <%= game.max %></li>
-        <li><i class='icon book'></i>Level : <%= game.level %></li>
-        <li><i class='icon time'></i>Time : About 1 hours long</li>
-      </ul>
-    </li>
+    </div>
 <% end %>
-</ul>
+</div>

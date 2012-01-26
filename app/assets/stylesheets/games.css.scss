@@ -1,8 +1,11 @@
 // Place all the styles related to the games controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.game{
+  margin-bottom: 20px;
+}
 
-li.game{
+.game .inner{
   padding: 8px;
   background-color: #f7f7f9;
   border: 1px solid #e1e1e8;
@@ -10,4 +13,5 @@ li.game{
 
 .game h4{
   padding-bottom: 8px;
+  text-align: center;
 }
