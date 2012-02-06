@@ -8,6 +8,9 @@ gem 'rails', '3.2.0'
 
 gem 'sqlite3'
 
+gem 'enumerize'
+gem 'wirb'
+
 group 'test' do 
 
 end
