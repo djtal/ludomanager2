@@ -1,35 +1,26 @@
-<div class="page-header">
-  <h1>Listing games</h1>
-</div>
+<div class="span9">
+  <div class="page-haeder">
+    <h1>All Game</h1>
+  </div>
 
-<div class="pagination pagination-centered">
-  <ul>
-    <% ('A'..'Z').each do |letter| %>
-      <li><%= link_to letter, "#" %></li>
-    <% end %>
-  </ul>
-</div>
-
-<div class='row'>
-<% @games.each do |game| %>
-    <div class="span6 game">
-      <div class='inner'>
-        <h4><%= link_to game.name, game_path(game) %></h4>
-        <div class='row'>
-          <div class="span2">
-            <%= image_tag "http://placehold.it/140x100" %>
+  <% @games.in_groups_of(3) do |games| %>
+    <div class="row-fluid">
+      <% games.each do |game| %>
+        <% if game %>
+          <div class="span4">
+            <h2><%= link_to game.name, game_path(game) %></h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn" href="#">View details &raquo;</a></p>
           </div>
-          <div class="span3">
-            <h5>Description</h5>
-            <p>My awsome description here</p>
-          </div>
-        </div>
-        <ul class="unstyled horizontal">
-          <li><i class='icon user'></i>Player : <%= game.min %> - <%= game.max %></li>
-          <li><i class='icon book'></i>Level : <%= game.level %></li>
-          <li><i class='icon time'></i>Time : About 1 hours long</li>
-        </ul>
-      </div>
+        <% end %>
+      <% end %>
     </div>
+  <% end %>
+</div><!--/span-->
+
+
+<% content_for :navbar do %>
+  <li class="nav-header">Gerer</li>
+  <li><%= link_to "New Game", new_game_path %></li>
+  <li><%= link_to "All Games", games_path %></li>
 <% end %>
-</div>

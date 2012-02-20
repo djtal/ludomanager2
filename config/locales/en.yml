@@ -1,5 +1,23 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  hello: "Hello world"
+  enumerize:
+    game:
+      target:
+        children: "Child"
+        all: "All"
+        casual: "Casual"
+        gamer: "Gamer"
+      time:
+        halfhour: "~30 min"
+        onehour: "~1 hour"
+        onehourhalf: "~1h30min"
+        twohour: "~2 hour"
+        morethantwo: "More than 2 hours"
+      level:
+        "1": "1"
+        "2": "2"
+        "3": "3"
+        "4": "4"
+        "5": "5"
+        "danger": "Danger"

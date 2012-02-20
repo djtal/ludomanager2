@@ -1,5 +1,13 @@
 Ludomanager2::Application.routes.draw do
+  resources :account_games
+
   resources :games
+  
+  namespace  "API" do
+    namespace "v1" do
+      resources :games
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

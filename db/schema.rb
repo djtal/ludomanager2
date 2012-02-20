@@ -17,6 +17,8 @@ ActiveRecord::Schema.define(:version => 20120124190511) do
     t.integer  "min"
     t.integer  "max"
     t.string   "name"
+    t.string   "target"
+    t.string   "time"
     t.integer  "level",      :default => 2
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false

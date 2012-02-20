@@ -1,0 +1,21 @@
+fr:
+  enumerize:
+    game:
+      target:
+        children: "Enfant"
+        all: "Tous public"
+        casual: "Casual"
+        gamer: "Gamers"
+      time:
+        halfhour: "~30 min"
+        onehour: "~1 heure"
+        onehourhalf: "~1h30min"
+        twohour: "~2 heures"
+        morethantwo: "Plus de 2heures"
+      level:
+        "1": "1"
+        "2": "2"
+        "3": "3"
+        "4": "4"
+        "5": "5"
+        "danger": "Danger"
