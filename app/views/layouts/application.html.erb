@@ -22,7 +22,14 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
               </ul>
-              <p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>
+              <p class="navbar-text pull-right">
+              <% if account_signed_in? %>
+                Logged in as <%= link_to current_account.email, "#" %> | 
+                <%= link_to "Log Out", destroy_account_session_path, :method => :delete %> 
+              <% else %>
+                <%= link_to "Sign In", new_account_session_path %>
+              <% end %>
+              </p>
             </div><!--/.nav-collapse -->
           </div>
         </div>
@@ -50,6 +57,6 @@
         </footer>
 
       </div><!--/.fluid-container-->
-  
+  </div>
 </body>
 </html>

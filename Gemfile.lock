@@ -125,7 +125,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
-  devise (~> 2.0.0.rc)
+  devise (~> 2.0.0)
   enumerize
   jquery-rails
   mysql

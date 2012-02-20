@@ -35,7 +35,7 @@ end
 gem 'jquery-rails'
 
 gem 'simple_form', :git => 'https://github.com/plataformatec/simple_form.git'
-gem 'devise', '~> 2.0.0.rc'
+gem 'devise', '~> 2.0.0'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

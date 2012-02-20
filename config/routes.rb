@@ -1,4 +1,6 @@
 Ludomanager2::Application.routes.draw do
+  devise_for :accounts
+
   resources :account_games
 
   resources :games
@@ -8,6 +10,8 @@ Ludomanager2::Application.routes.draw do
       resources :games
     end
   end
+  
+  root :to => 'games#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -58,7 +62,6 @@ Ludomanager2::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'games#index'
 
   # See how all your routes lay out with "rake routes"
 
