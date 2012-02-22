@@ -1,0 +1,2 @@
+module AccountGamesHelper
+end

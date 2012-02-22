@@ -1,0 +1,10 @@
+<div class="page-haeder">
+  <h1>Add games</h1>
+</div>
+
+<%= render 'form' %>
+
+<% content_for :navbar do %>
+	<li class="nav-header">Gerer</li>
+	<li><%= link_to "All my games", account_account_games_path(current_account) %></li>
+<% end -%>

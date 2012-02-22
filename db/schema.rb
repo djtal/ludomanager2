@@ -11,9 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120220203344) do
+ActiveRecord::Schema.define(:version => 20120220211505) do
 
   create_table "account_games", :force => true do |t|
+    t.integer  "game_id"
+    t.integer  "account_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

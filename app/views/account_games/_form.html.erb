@@ -1,0 +1,11 @@
+<%= simple_form_for([current_account, @account_game]) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+  	<%= f.association :game %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

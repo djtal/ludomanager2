@@ -1,15 +1,13 @@
 Ludomanager2::Application.routes.draw do
   devise_for :accounts
 
-  resources :account_games
 
   resources :games
   
-  namespace  "API" do
-    namespace "v1" do
-      resources :games
-    end
+  resources :accounts, :only => [:show, :edit] do
+    resources :account_games
   end
+  
   
   root :to => 'games#index'
 
