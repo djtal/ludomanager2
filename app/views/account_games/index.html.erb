@@ -1,21 +1,20 @@
-<h1>Listing account_games</h1>
+<div class="page-haeder">
+  <h1>Listing my Games</h1>
+</div>
 
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @account_games.each do |account_game| %>
-  <tr>
-    <td><%= link_to 'Show', account_game %></td>
-    <td><%= link_to 'Edit', edit_account_game_path(account_game) %></td>
-    <td><%= link_to 'Destroy', account_game, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
+<table class="table table-stripped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Admin</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @account_games %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New Account game', new_account_game_path %>
+<% content_for :navbar do %>
+  <li><%= link_to " Add games...", new_account_account_game_path(current_account) %></li>
+<% end -%>
