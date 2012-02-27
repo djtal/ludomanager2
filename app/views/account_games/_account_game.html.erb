@@ -1,0 +1,7 @@
+  <tr>
+    <td><%= link_to account_game.game.name, account_account_game_path(current_account, account_game) %></td>
+    <td><%= account_game.game.target %></td>
+    <td><%= content_tag  :span, account_game.game.level, class: "label" %></td>
+    <td><%= link_to "", edit_account_account_game_path(current_account, account_game), class: "icon-edit" %>
+    	<%= link_to "", account_account_game_path(current_account, account_game), method: :delete, class: "icon-trash" %></td>
+  </tr>

@@ -1,12 +1,13 @@
-<div class="page-haeder">
+<div class="page-header">
   <h1>Listing my Games</h1>
 </div>
 
-<table class="table table-stripped">
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Name</th>
       <th>Type</th>
+      <th>Level</th>
       <th>Admin</th>
     </tr>
   </thead>
@@ -16,5 +17,16 @@
 </table>
 
 <% content_for :navbar do %>
+<li class="nav-header">Manage</li>
   <li><%= link_to " Add games...", new_account_account_game_path(current_account) %></li>
+
+  <li class="nav-header">By Type</li>
+  <% Game.target.values.each do |optn| %>
+    <li><%= link_to optn.text.humanize , "#" %></li>
+  <% end -%>
+   <li class="nav-header">By Time</li>
+  <% Game.time.values.each do |optn| %>
+    <li><%= link_to optn.text.humanize , "#" %></li>
+  <% end -%>
+
 <% end -%>
