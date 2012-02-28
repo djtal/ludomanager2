@@ -4,7 +4,13 @@ class AccountGamesController < ApplicationController
   # GET /account_games
   # GET /account_games.json
   def index
-    @account_games = current_account.account_games.includes(:game).all
+    query = current_account.account_games.includes(:game)
+    if params[:target] || params[:time]
+        query = query.where({games: {target: params[:target]}}) if params[:target]
+        query = query.where({games: {time: params[:time]}}) if params[:time]
+    end
+    
+    @account_games = query.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -46,7 +52,7 @@ class AccountGamesController < ApplicationController
 
     respond_to do |format|
       if @account_game.save
-        format.html { redirect_to account_account_game_path(current_account, @account_game), notice: 'Account game was successfully created.' }
+        format.html { redirect_to account_account_games_path(current_account), notice: 'Account game was successfully created.' }
         format.json { render json: @account_game, status: :created, location: @account_game }
       else
         format.html { render action: "new" }
@@ -62,7 +68,7 @@ class AccountGamesController < ApplicationController
 
     respond_to do |format|
       if @account_game.update_attributes(params[:account_game])
-        format.html { redirect_to account_account_game_path(current_account, @account_game), notice: 'Account game was successfully updated.' }
+        format.html { redirect_to account_account_games_path(current_account), notice: 'Account game was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

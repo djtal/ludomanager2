@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>Listing my Games</h1>
+  <h2>Listing my Games</h2>
 </div>
 
 <table class="table table-striped">
@@ -24,11 +24,11 @@
 
   <li class="nav-header">By Type</li>
   <% Game.target.values.each do |optn| %>
-    <li><%= link_to optn.text.humanize , "#" %></li>
+    <li><%= link_to optn.text.humanize , account_account_games_path(current_account, target: optn) %></li>
   <% end -%>
    <li class="nav-header">By Time</li>
   <% Game.time.values.each do |optn| %>
-    <li><%= link_to optn.text.humanize , "#" %></li>
+    <li><%= link_to optn.text.humanize , account_account_games_path(current_account, time: optn) %></li>
   <% end -%>
 
 <% end -%>
