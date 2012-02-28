@@ -5,6 +5,7 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <th class="span1"></th>
       <th>Name</th>
       <th>Type</th>
       <th>Level</th>
@@ -19,6 +20,7 @@
 <% content_for :navbar do %>
 <li class="nav-header">Manage</li>
   <li><%= link_to " Add games...", new_account_account_game_path(current_account) %></li>
+  <li><%= link_to "Stats...", "#" %></li>
 
   <li class="nav-header">By Type</li>
   <% Game.target.values.each do |optn| %>
