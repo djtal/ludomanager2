@@ -19,6 +19,7 @@
             <div class="nav-collapse">
               <ul class="nav">
                 <li class="active"><%= link_to "Games", games_path %></li>
+                <li><%= link_to 'Editors', editors_path %></li>
                 <% if account_signed_in? %>
                   <li><%= link_to "My Games", account_account_games_path(current_account) %></li>
                 <% end -%>

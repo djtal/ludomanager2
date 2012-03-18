@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120220211505) do
+ActiveRecord::Schema.define(:version => 20120318130053) do
 
   create_table "account_games", :force => true do |t|
     t.integer  "game_id"
@@ -37,6 +37,32 @@ ActiveRecord::Schema.define(:version => 20120220211505) do
 
   add_index "accounts", ["email"], :name => "index_accounts_on_email", :unique => true
   add_index "accounts", ["reset_password_token"], :name => "index_accounts_on_reset_password_token", :unique => true
+
+  create_table "countries", :force => true do |t|
+    t.string   "code"
+    t.text     "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "editions", :force => true do |t|
+    t.integer  "game_id"
+    t.integer  "editor_id"
+    t.string   "box_file_name"
+    t.string   "box_content_type"
+    t.integer  "box_file_size"
+    t.datetime "box_updated_at"
+    t.string   "lang"
+    t.string   "plateform"
+    t.boolean  "primary"
+    t.date     "out_date"
+  end
+
+  create_table "editors", :force => true do |t|
+    t.string  "name"
+    t.string  "url"
+    t.integer "country_id"
+  end
 
   create_table "games", :force => true do |t|
     t.integer  "min"

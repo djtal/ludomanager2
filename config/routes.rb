@@ -1,4 +1,8 @@
 Ludomanager2::Application.routes.draw do
+  resources :editions
+
+  resources :editors
+
   devise_for :accounts
 
 
