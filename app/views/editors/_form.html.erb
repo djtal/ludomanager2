@@ -7,6 +7,12 @@
     <%= f.association :country %>
   </div>
 
+  <div class="form-inputs">
+    <%= f.input :logo, :as => :file %>
+    Ou
+    <%= f.input :remote_logo_url, :as => :string, :label => "URL du logo" %>
+  </div>
+
   <div class="form-actions">
     <%= f.button :submit %>
   </div>

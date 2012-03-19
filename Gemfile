@@ -9,7 +9,8 @@ gem 'rails', '3.2.0'
 gem 'sqlite3'
 
 gem 'enumerize'
-gem "paperclip", "~> 2.0"
+gem 'carrierwave'
+gem 'mini_magick'
 gem 'wirb'
 
 group 'test' do 
