@@ -48,6 +48,12 @@
             </div><!--/.well -->
           </div><!--/span-->
           <div class="span9">
+            <ul class="breadcrumb">
+              <li>
+                <%= link_to 'Ludomanager', root_path %><span class="divider">/</span>
+              </li>
+              <%= yield :breadcrump %>
+            </ul>
             <%= yield %>
           </div>
           

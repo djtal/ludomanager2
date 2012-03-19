@@ -1,11 +1,11 @@
 <div class="page-haeder">
-  <h1>Create a new Game</h1>
+  <h1>Creer un nouveu jeu</h1>
 </div>
 
 <%= render 'form' %>
 
 <% content_for :navbar do %>
   <li class="nav-header">Gerer</li>
-  <li><%= link_to "New Game", new_game_path %></li>
-  <li><%= link_to "All Games", games_path %></li>
+  <li><%= link_to "Creer jeu", new_game_path %></li>
+  <li><%= link_to "Tous les jeux", games_path %></li>
 <% end %>

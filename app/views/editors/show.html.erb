@@ -1,10 +1,16 @@
-<div class="page-haeder">
-  <h1>Page title here</h1>
+<div class="page-header">
+  <h1><%= @editor.name %></h1>
 </div>
 
 <%= notice %>
 
 
+<% content_for :breadcrump do -%>
+  <li><%= link_to 'Les editeur', editors_path %><span class="divider">/</span></li>
+  <li class="active"><%= @editor.name %></li>
+<% end -%>
 <% content_for :navbar do %>
-
+  <li class="nav-header">Gerer</li>
+  <li><%= link_to "Modifier", edit_editor_path(@editor) %></li>
+  <li><%= link_to "Nouvel editeur", new_editor_path %></li>
 <% end %>
