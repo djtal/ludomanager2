@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120319205901) do
+ActiveRecord::Schema.define(:version => 20120323204932) do
 
   create_table "account_games", :force => true do |t|
     t.integer  "game_id"
@@ -46,21 +46,18 @@ ActiveRecord::Schema.define(:version => 20120319205901) do
   end
 
   create_table "editions", :force => true do |t|
-    t.integer  "game_id"
-    t.integer  "editor_id"
-    t.string   "box_file_name"
-    t.string   "box_content_type"
-    t.integer  "box_file_size"
-    t.datetime "box_updated_at"
-    t.string   "lang"
-    t.string   "plateform"
-    t.boolean  "primary"
-    t.date     "out_date"
+    t.integer "game_id"
+    t.integer "editor_id"
+    t.string  "lang"
+    t.string  "plateform"
+    t.date    "out_date"
+    t.string  "kind"
   end
 
   create_table "editors", :force => true do |t|
     t.string  "name"
     t.string  "url"
+    t.string  "lang"
     t.integer "country_id"
     t.string  "logo"
   end

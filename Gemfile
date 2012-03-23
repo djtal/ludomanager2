@@ -12,6 +12,8 @@ gem 'enumerize'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'wirb'
+gem 'hirb'
+gem 'map_by_method'
 
 group 'test' do 
 

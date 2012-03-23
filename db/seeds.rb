@@ -6,5 +6,19 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Game.create([{name: 'Pandemie', min: 2, max: 5, level: 3}, {name: 'Castle Panic', min: 1, max: 6, level: 2 }])
-Game.create([{name: 'Caylus', min: 2, max: 5, level: 3}, {name: 'Ghost Storie', min: 1, max: 6, level: 2 }])
+
+
+def load_countries
+   country = YAML.load_file("db/country.yaml")
+  return unless country
+  country.each do |code, name|
+    c = Country.new do |c|
+      c.code = code
+      c.name = name
+    end
+    c.save
+  end
+end
+
+
+load_countries
