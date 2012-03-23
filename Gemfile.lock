@@ -6,6 +6,14 @@ GIT
       actionpack (~> 3.0)
       activemodel (~> 3.0)
 
+GIT
+  remote: https://github.com/rails/strong_parameters.git
+  revision: 404b8dded30f028510135c377cc015a9f58fef66
+  specs:
+    strong_parameters (0.1.1)
+      actionpack (>= 3.2.0)
+      activemodel (>= 3.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -140,5 +148,6 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   simple_form!
   sqlite3
+  strong_parameters!
   uglifier (>= 1.0.3)
   wirb

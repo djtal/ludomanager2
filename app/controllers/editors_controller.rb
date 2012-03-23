@@ -40,7 +40,7 @@ class EditorsController < ApplicationController
   # POST /editors
   # POST /editors.json
   def create
-    @editor = Editor.new(params[:editor])
+    @editor = Editor.new(editor_params)
 
     respond_to do |format|
       if @editor.save
@@ -80,4 +80,11 @@ class EditorsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+
+  def editor_params
+    params.required(:editor).permit(:name, :url, :logo, :remote_logo_url)
+  end
+
 end
