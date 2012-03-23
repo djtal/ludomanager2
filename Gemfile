@@ -7,7 +7,7 @@ gem 'rails', '3.2.0'
 
 
 gem 'sqlite3'
-gem 'strong_parameters', :git => 'https://github.com/rails/strong_parameters.git'
+#gem 'strong_parameters', :git => 'https://github.com/rails/strong_parameters.git'
 gem 'enumerize'
 gem 'carrierwave'
 gem 'mini_magick'

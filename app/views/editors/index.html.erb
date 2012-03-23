@@ -7,8 +7,8 @@
  <% @editors.each do |editor| -%>
   <li class="span3">
   <%= link_to editor_path(editor) do %>
-    <div class="thubnail">
-      <%= image_tag editor.logo.normal.to_s, :alt => editor.name %>
+    <div class="thumbnail">
+      <%= image_tag editor.logo.normal.url, :alt => editor.name %>
       <div class="caption">
         <h5><%= editor.name %></h5>
       </div>
