@@ -1,3 +1,25 @@
-<div class="page-haeder">
-  <h1>Les Pays</h1>
-</div>
+<% content_for :breadcrump do -%>
+  <li><%= link_to "Les Pays", admin_countries_path %><span class="divider">/</span></li>
+<% end -%>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Nom</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @countrie.each do |c| -%>
+      <tr>
+        <td><%= c.code %></td>
+        <td><%= c.name %></td>
+      </tr>
+    <% end -%>
+</tbody>
+</table>
+
+
+<% content_for :navbar do -%>
+ <li><%= link_to "Nouveau...", new_admin_country_path %></li>
+<% end -%>

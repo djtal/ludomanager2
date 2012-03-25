@@ -17,6 +17,7 @@ Ludomanager2::Application.routes.draw do
 
 
   namespace :admin  do
+    root :to => "admin#index"
     resources :countries
   end
   # The priority is based upon order of creation:
