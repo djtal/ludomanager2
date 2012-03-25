@@ -2,10 +2,11 @@
   <li><%= link_to "Les Pays", admin_countries_path %><span class="divider">/</span></li>
 <% end -%>
 
-<table class="table table-bordered table-striped">
+<table class=" f32 table table-bordered table-striped">
   <thead>
     <tr>
       <th>Code</th>
+      <th class="span1">Drapeau</th>
       <th>Nom</th>
     </tr>
   </thead>
@@ -13,6 +14,7 @@
     <% @countrie.each do |c| -%>
       <tr>
         <td><%= c.code %></td>
+        <td class="flag <%= c.code.downcase %>"></td>
         <td><%= c.name %></td>
       </tr>
     <% end -%>
