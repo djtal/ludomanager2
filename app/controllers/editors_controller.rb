@@ -3,7 +3,7 @@ class EditorsController < ApplicationController
   # GET /editors.json
   def index
     @editors = Editor.all
-
+    @title = "Tous les editeurs"
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @editors }
@@ -14,7 +14,7 @@ class EditorsController < ApplicationController
   # GET /editors/1.json
   def show
     @editor = Editor.find(params[:id])
-
+    @title = @editor.name
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @editor }

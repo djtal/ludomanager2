@@ -4,5 +4,7 @@ class Editor < ActiveRecord::Base
 
   validates_uniqueness_of :name
 
-  mount_uploader :logo, ImageUploader
+  has_one :logo, :class_name => "Image", :as => :imageable, :dependent => :destroy
+  accepts_nested_attributes_for :logo
+
 end

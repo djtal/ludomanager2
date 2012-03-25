@@ -12,13 +12,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "uploads/#{model.class.to_s.underscore}/#{model.imageable.class.to_s.underscore}/#{model.id}"
   end
 
-  # Provide a default URL as a default if there hasn't been a file uploaded:
-  # def default_url
-  #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
-  # end
 
   # Process files as they are uploaded:
   # process :scale => [200, 300]
@@ -45,11 +41,14 @@ class ImageUploader < CarrierWave::Uploader::Base
   # def extension_white_list
   #   %w(jpg jpeg gif png)
   # end
+  def default_url
+    "/images/fallback/" + [model.class.to_s.downcase,version_name, "default.png"].compact.join('_')
+  end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   def filename
-    "#{model.name.downcase}.#{file.extension}" if original_filename.present?
+  "#{model.imageable.name.downcase}.#{file.extension}" if original_filename.present?
   end
 
 end

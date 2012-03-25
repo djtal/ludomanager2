@@ -1,14 +1,9 @@
-<div class="page-header">
-  <h2>Listing editors</h2>
-</div>
-
-
 <ul class="thumbnails">
  <% @editors.each do |editor| -%>
-  <li class="span3">
+ <li class="span3">
   <%= link_to editor_path(editor) do %>
     <div class="thumbnail">
-      <%= image_tag editor.logo.normal.url, :alt => editor.name %>
+      <%= image_tag editor.logo.image.normal.url, :alt => editor.name %>
       <div class="caption">
         <h5><%= editor.name %></h5>
       </div>
@@ -18,7 +13,9 @@
  <% end -%>
 </ul>
 
-
+<% content_for :breadcrump do -%>
+  <li><%= link_to @title, editors_path -%></li>
+<% end -%>
 <% content_for :navbar do %>
   <li class="nav-header">Gerer</li>
   <li><%= link_to "New editor", new_editor_path %></li>

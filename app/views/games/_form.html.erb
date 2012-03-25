@@ -9,7 +9,23 @@
   <%= f.input :target, :collection => Game.target.options %>
   <%= f.input :level, :collection => Game.level.options %>
   </div>
-  
+
+  <div class="form-inputs">
+    <%= f.fields_for :editions, @game.editions.build do |fe| -%>
+      <%= fe.input :name %>
+      <%= fe.association :editor %>
+      <%= fe.input :out_date %>
+      <%= fe.association :country %>
+      <%= fe.input :kind, :collection => Edition.kind.options %>
+      <%= fe.input :plateform, :collection => Edition.plateform.options %>
+      <%= fe.fields_for :box_front, @game.editions.build.build_box_front do |box|%>
+        <%= box.input :image, :as => :file %>
+        Ou
+        <%= box.input :remote_image_url %>
+      <% end -%>
+    <% end -%>
+  </div>
+
   <div class="form-actions">
     <%= f.button :submit, :class => "btn-primary" %>
   </div>
