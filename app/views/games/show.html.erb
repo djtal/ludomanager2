@@ -7,12 +7,31 @@
 
 <ul class="nav nav-tabs">
   <li class="active">
-    <a href="#">General</a>
+    <a href="#general", data-toggle="tab">General</a>
   </li>
-  <li><a href="#">Extension</a></li>
-  <li><a href="#">Editions</a></li>
+  <li><a href="#extensions">Extension</a></li>
+  <li><a href="#editions">Editions</a></li>
 </ul>
 
-<%% content_for :navbar do %>
 
-<%% end %>
+<div class="tab-content">
+  <div class="tab-pane active" id="general">
+    <div class="span4">
+      <%= image_tag @game.editions.primary.first.box_front.image.normal.url %>
+    </div>
+  </div>
+  <div class="tab-pane" id="extensions">
+  </div>
+  <div class="tab-pane" id="editions">
+    <%= render "editions/list" %>
+  </div>
+</div>
+
+<% content_for :navbar do %>
+  <li class="nav-header">Administration</li>
+  <li><%= link_to "Nouveau", new_game_path %></li>
+  <li><%= link_to "Tous les jeux", games_path %></li>
+  <li class="nav-header">Editions</li>
+  <li><%= link_to "Ajouter", new_game_edition_path(@game) %></li>
+
+<% end %>
