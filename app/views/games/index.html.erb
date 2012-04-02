@@ -1,8 +1,10 @@
 <% @games.in_groups_of(3) do |games| %>
   <div class="row-fluid">
+    <ul class="thumbnails">
       <% games.each do |game| %>
         <%= render game if game %>
       <% end %>
+    </ul>
   </div>
 <% end %>
 
