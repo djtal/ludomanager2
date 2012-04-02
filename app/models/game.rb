@@ -9,6 +9,7 @@ class Game < ActiveRecord::Base
   enumerize :time, :in => [:halfhour, :onehour, :onehourhalf, :twohour, :morethantwo], :default => :onehour
 
   has_many :editions
-
   accepts_nested_attributes_for :editions
+  
+  has_one :active_edition, :class_name => "Edition"
 end

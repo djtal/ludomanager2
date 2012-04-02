@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120325135336) do
+ActiveRecord::Schema.define(:version => 20120402190642) do
 
   create_table "account_games", :force => true do |t|
     t.integer  "game_id"
@@ -63,16 +63,8 @@ ActiveRecord::Schema.define(:version => 20120325135336) do
     t.string  "logo"
   end
 
-  create_table "games", :force => true do |t|
-    t.integer  "min"
-    t.integer  "max"
-    t.string   "name"
-    t.string   "target"
-    t.string   "time"
-    t.integer  "level",      :default => 2
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
-  end
+# Could not dump table "games" because of following StandardError
+#   Unknown type 'active_edition_id' for column 'integer'
 
   create_table "images", :force => true do |t|
     t.string   "image"

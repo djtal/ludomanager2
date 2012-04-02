@@ -24,8 +24,10 @@ class EditionsController < ApplicationController
   # GET /editions/new
   # GET /editions/new.json
   def new
-    @edition = Edition.new
-
+    @game = Game.find_by_id(params[:game_id])
+    @edition = @game ? @game.editions.build : Edition.new
+    @edition.name = @game.name if @game    
+    @edition.build_box_front
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @edition }
@@ -40,7 +42,8 @@ class EditionsController < ApplicationController
   # POST /editions
   # POST /editions.json
   def create
-    @edition = Edition.new(params[:edition])
+    @game = Game.find_by_id(params[:game_id]) if params[:game_id].present?
+    @edition = @game ? @game.editions.build(params[:editions]) :  Edition.new(params[:edition])
 
     respond_to do |format|
       if @edition.save

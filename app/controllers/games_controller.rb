@@ -3,7 +3,7 @@ class GamesController < ApplicationController
   # GET /games.json
   def index
     @games = Game.all
-
+    @title = "Les Jeux"
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @games }
@@ -25,7 +25,7 @@ class GamesController < ApplicationController
   # GET /games/new.json
   def new
     @game = Game.new
-
+    @title = "Creer un nouveau jeu "
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @game }

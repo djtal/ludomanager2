@@ -25,7 +25,7 @@ class EditorsController < ApplicationController
   # GET /editors/new.json
   def new
     @editor = Editor.new
-
+  
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @editor }

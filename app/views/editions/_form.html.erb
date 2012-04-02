@@ -1,7 +1,18 @@
-<%= simple_form_for(@edition) do |f| %>
+<%= simple_form_for([@game, @edition]) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.association :editor %>
+    <%= f.input :out_date %>
+    <%= f.association :country %>
+    <%= f.input :kind, :collection => Edition.kind.options %>
+    <%= f.input :plateform, :collection => Edition.plateform.options %>
+    <%= f.fields_for :box_front do |box|%>
+      <%= box.input :image, :as => :file %>
+      Ou
+      <%= box.input :remote_image_url %>
+    <% end -%>
   </div>
 
   <div class="form-actions">

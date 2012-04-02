@@ -27,6 +27,10 @@
   </div>
 </div>
 
+<% content_for :breadcrump do -%>
+  <li><%= link_to "Les jeux", games_path -%><span class="divider">/</span></li>
+  <li><%= @game.name.humanize %></li>
+<% end -%>
 <% content_for :navbar do %>
   <li class="nav-header">Administration</li>
   <li><%= link_to "Nouveau", new_game_path %></li>

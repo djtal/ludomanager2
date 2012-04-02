@@ -6,8 +6,9 @@ Ludomanager2::Application.routes.draw do
   devise_for :accounts
 
 
-  resources :games
-  
+  resources :games do
+    resources :editions
+  end
   resources :accounts, :only => [:show, :edit] do
     resources :account_games
   end

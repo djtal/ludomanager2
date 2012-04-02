@@ -11,7 +11,7 @@
   </div>
 
   <div class="form-inputs">
-    <%= f.fields_for :editions, @game.editions.build do |fe| -%>
+    <%= f.fields_for :editions, @game.build_active_edition do |fe| -%>
       <%= fe.input :name %>
       <%= fe.association :editor %>
       <%= fe.input :out_date %>

@@ -1,9 +1,14 @@
 <div class="page-header">
-  <h1>Creer un nouveu jeu</h1>
+  <h2><%= @title %></h2>
 </div>
 
 <%= render 'form' %>
 
+
+<% content_for :breadcrump do -%>
+  <li><%= link_to "Tous les jeux", games_path %><span class="divider">/</span></li>
+  <li><%= @title %></li>
+<% end -%>
 <% content_for :navbar do %>
   <li class="nav-header">Gerer</li>
   <li><%= link_to "Creer jeu", new_game_path %></li>

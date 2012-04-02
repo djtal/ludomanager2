@@ -1,23 +1,22 @@
-  <div class="page-haeder">
-    <h1>All Game</h1>
-  </div>
-
-  <% @games.in_groups_of(3) do |games| %>
-    <div class="row-fluid">
-      <% games.each do |game| %>
-        <% if game %>
-          <div class="span4">
-            <span class="title"><%= link_to game.name, game_path(game) %></span>
-            <%= image_tag game.editions.primary.first.box_front.image.normal.url  %>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn" href="#">View details &raquo;</a></p>
-          </div>
-        <% end %>
+<% @games.in_groups_of(3) do |games| %>
+  <div class="row-fluid">
+    <% games.each do |game| %>
+      <% if game %>
+        <div class="span4">
+          <span class="title"><%= link_to game.name, game_path(game) %></span>
+          <%= image_tag game.editions.primary.first.box_front.image.normal.url  %>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+        </div>
       <% end %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+<% end %>
 
 
+<% content_for :breadcrump do -%>
+  <li><%= link_to @title, games_path -%></li>
+<% end -%>
 <% content_for :navbar do %>
   <li class="nav-header">Gerer</li>
   <li><%= link_to "New Game", new_game_path %></li>
