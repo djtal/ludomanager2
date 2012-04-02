@@ -1,15 +1,8 @@
 <% @games.in_groups_of(3) do |games| %>
   <div class="row-fluid">
-    <% games.each do |game| %>
-      <% if game %>
-        <div class="span4">
-          <span class="title"><%= link_to game.name, game_path(game) %></span>
-          <%= image_tag game.editions.primary.first.box_front.image.normal.url  %>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div>
+      <% games.each do |game| %>
+        <%= render game if game %>
       <% end %>
-    <% end %>
   </div>
 <% end %>
 

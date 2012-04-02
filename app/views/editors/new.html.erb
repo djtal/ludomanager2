@@ -1,11 +1,15 @@
 <div class="page-header">
-  <h1>Create a new editor</h1>
+  <h2><%= @title %></h2>
 </div>
 
 <%= render 'form' %>
 
+<% content_for :breadcrump do -%>
+  <li><%= link_to "Tous les editeur", editors_path %><span class="divider">/</span></li>
+  <li><%= @title %></li>
+<% end -%>
 <% content_for :navbar do %>
   <li class="nav-header">Gerer</li>
-  <li><%= link_to "Create new editor", new_editor_path %></li>
-  <li><%= link_to "All editors", editors_path %></li>
+  <li><%= link_to "Creer un editeur", new_editor_path %></li>
+  <li><%= link_to "Tous les editeurs", editors_path %></li>
 <% end %>

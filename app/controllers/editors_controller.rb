@@ -25,7 +25,8 @@ class EditorsController < ApplicationController
   # GET /editors/new.json
   def new
     @editor = Editor.new
-  
+    @title = "Creer un editeur"
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @editor }
@@ -47,6 +48,7 @@ class EditorsController < ApplicationController
         format.html { redirect_to @editor, notice: 'Editor was successfully created.' }
         format.json { render json: @editor, status: :created, location: @editor }
       else
+        @title = "Creer un editeur"
         format.html { render action: "new" }
         format.json { render json: @editor.errors, status: :unprocessable_entity }
       end
