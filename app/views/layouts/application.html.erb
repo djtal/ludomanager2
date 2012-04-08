@@ -38,25 +38,18 @@
         </div>
       </div>
 
-      <div class="container-fluid">
-        <div class="row-fluid">
-          <div class="span3">
-            <div class="well sidebar-nav">
-              <ul class="nav nav-list">
-                <%= yield :navbar %>
-              </ul>
-            </div><!--/.well -->
-          </div><!--/span-->
-          <div class="span9">
-            <div class="row-fluid">
-              <ul class="breadcrumb">
-                <li>
-                  <%= link_to 'Ludomanager', root_path %><span class="divider">/</span>
-                </li>
-                <%= yield :breadcrump %>
-              </ul>
-              <%= yield %>
-            </div>
+      <div class="container">
+        <div class="row">
+            <ul class="breadcrumb">
+              <li>
+                <%= link_to 'Ludomanager', root_path %><span class="divider">/</span>
+              </li>
+              <%= yield :breadcrump %>
+            </ul>
+            <ul>
+              <%= yield :navbar %>
+            </ul>
+            <%= yield %>
           </div>
         </div><!--/row-->
 
