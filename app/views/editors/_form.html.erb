@@ -1,21 +1,20 @@
-<%= simple_form_for(@editor) do |f| %>
-  <%= f.error_notification %>
-
+<fieldset class="well">
+  <%= form.input :name %>
+</fieldset>
+<fieldset class="well">
+  <legend></legend>
   <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :url %>
-    <%= f.association :country %>
+    <%= form.input :url %>
+    <%= form.association :country %>
   </div>
+</fieldset>
 
+<fieldset class="well">
   <div class="form-inputs">
-    <%= f.fields_for :logo, @editor.build_logo do |fl| %>
+    <%= form.fields_for :logo, @editor.build_logo do |fl| %>
       <%= fl.input :image, :as => :file %>
       Ou
       <%= fl.input :remote_image_url, :as => :string, :label => "URL du logo" %>
-    <% end -%>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+  <% end -%>
+</fieldset>
+</div>

@@ -2,7 +2,7 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.json
   def index
-    @games = Game.all
+    @games = Game.paginate(:per_page => 20, :page => params[:page])
     @title = "Les Jeux"
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +13,7 @@ class GamesController < ApplicationController
   # GET /games/1
   # GET /games/1.json
   def show
-    @game = Game.find_by_id(params[:id])
+    @game = Game.joins(:editions).find_by_id(params[:id])
     @title = @game.name
     respond_to do |format|
       format.html # show.html.erb
@@ -26,6 +26,8 @@ class GamesController < ApplicationController
   def new
     @game = Game.new
     @title = "Creer un nouveau jeu "
+    @game.build_active_edition
+    @game.active_edition.build_box_front
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @game }

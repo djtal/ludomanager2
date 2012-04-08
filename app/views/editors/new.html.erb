@@ -1,15 +1,15 @@
-<div class="page-header">
-  <h2><%= @title %></h2>
-</div>
-
-<%= render 'form' %>
+<%= simple_form_for(@editor) do |f| %>
+  <%= f.error_notification %>
+  <%= render 'form', :form => f %>
+  <div class="form-actions">
+    <%= f.button :submit, :value => "Creer", :class => "btn btn-primary" %>
+    <%= link_to "Annuler", editors_path, :class => "btn" %>
+  </div>
+<% end -%>
 
 <% content_for :breadcrump do -%>
   <li><%= link_to "Tous les editeur", editors_path %><span class="divider">/</span></li>
   <li><%= @title %></li>
 <% end -%>
 <% content_for :navbar do %>
-  <li class="nav-header">Gerer</li>
-  <li><%= link_to "Creer un editeur", new_editor_path %></li>
-  <li><%= link_to "Tous les editeurs", editors_path %></li>
 <% end %>

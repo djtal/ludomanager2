@@ -1,32 +1,29 @@
-<%= simple_form_for(@game) do |f| %>
+<%= simple_form_for(@game, :html => {:class => "form-horizontal"}) do |f| %>
   <%= f.error_notification %>
   
   <div class="form-inputs">
-  <%= f.input :name %>
-  <%= f.input :min %>
-  <%= f.input :max %>
-  <%= f.input :time, :collection => Game.time.options %>
-  <%= f.input :target, :collection => Game.target.options %>
-  <%= f.input :level, :collection => Game.level.options %>
+  <fieldset class="well">
+    <%= f.input :name %>
+  </fieldset>
+  <fieldset class="well">
+    <legend>Caracteristiques</legend>
+      <%= f.input :min %>
+      <%= f.input :max %>
+      <%= f.input :time, :collection => Game.time.options, :class => "span3" %>
+      <%= f.input :target, :collection => Game.target.options, :class => "span3" %>
+      <%= f.input :level, :collection => Game.level.options, :class => "span1" %>
+  </fieldset>
   </div>
 
-  <div class="form-inputs">
-    <%= f.fields_for :editions, @game.build_active_edition do |fe| -%>
-      <%= fe.input :name %>
-      <%= fe.association :editor %>
-      <%= fe.input :out_date %>
-      <%= fe.association :country %>
-      <%= fe.input :kind, :collection => Edition.kind.options %>
-      <%= fe.input :plateform, :collection => Edition.plateform.options %>
-      <%= fe.fields_for :box_front, @game.editions.build.build_box_front do |box|%>
-        <%= box.input :image, :as => :file %>
-        Ou
-        <%= box.input :remote_image_url %>
-      <% end -%>
-    <% end -%>
-  </div>
-
+  <% if @game.active_edition.new_record? -%>
+    <div class="form-inputs">
+        <%= f.fields_for @game.active_edition do |fe| -%>
+          <%= render "editions/form", :form => fe %>
+        <% end -%>
+    </div>
+  <% end -%>
   <div class="form-actions">
-    <%= f.button :submit, :class => "btn-primary" %>
+    <%= f.button :submit, :value => "Creer", :class => "btn-primary" %>
+    <%= link_to "Annuler", games_path, :class => "btn" %>
   </div>
 <% end %>

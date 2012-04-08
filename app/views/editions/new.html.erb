@@ -1,6 +1,13 @@
 
-<%= render 'form' %>
+<%= simple_form_for([@game, @edition]) do |f| %>
+  <%= f.error_notification %>
+  <%= render 'form', :form => f %>
 
+  <div class="form-actions">
+    <%= f.button :submit, :value => "Creer", :class => "btn btn-primary" %>
+    <%= link_to "Annuler", games_path, :class => "btn" %>
+  </div>
+<% end -%>
 
 <% content_for :breadcrump do -%>
   <% if @game -%>
@@ -14,9 +21,4 @@
   <li>Creer une editions</li>
 <% end -%>
 <% content_for :navbar do %>
-  <li class="nav-header">Administration</li>
-  <li><%= link_to "Nouveau", new_game_path %></li>
-  <li><%= link_to "Tous les jeux", games_path %></li>
-  <li class="nav-header">Editions</li>
-  <li><%= link_to "Ajouter", new_game_edition_path(@game) %></li>
 <% end -%>

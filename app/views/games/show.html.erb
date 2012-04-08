@@ -1,15 +1,11 @@
-<div class="page-haeder">
-  <h1><%= @game.name %></h1>
-</div>
 
 <%= notice %>
 
 
 <ul class="nav nav-tabs">
   <li class="active">
-    <a href="#general", data-toggle="tab">General</a>
+    <a href="#general", data-toggle="tab"><%= @game.name %></a>
   </li>
-  <li><a href="#extensions">Extension</a></li>
   <li><a href="#editions">Editions</a></li>
 </ul>
 
@@ -32,10 +28,5 @@
   <li><%= @game.name.humanize %></li>
 <% end -%>
 <% content_for :navbar do %>
-  <li class="nav-header">Administration</li>
-  <li><%= link_to "Nouveau", new_game_path %></li>
-  <li><%= link_to "Tous les jeux", games_path %></li>
-  <li class="nav-header">Editions</li>
-  <li><%= link_to "Ajouter", new_game_edition_path(@game) %></li>
-
+  <li><%= link_to "Nouvelle ditions", new_game_edition_path(@game), :class => "btn" %></li>
 <% end %>
