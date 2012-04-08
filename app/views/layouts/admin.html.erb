@@ -15,11 +15,12 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </a>
-            <%= link_to "Administration", admin_root_path, :class => "brand" %>
+            <%= link_to admin_root_path, :class => "brand" do %>
+              Ludomanager<span class="red">::Admin</span> 
+            <% end -%>
             <div class="nav-collapse">
               <ul class="nav">
-                <li class="active"><%= link_to "Les Jeux", "" %></li>
-                <li><%= link_to 'Editors', editors_path %></li>
+                <li><%= link_to "Les Jeux", admin_games_path %></li>
                 <li><%= link_to 'Les Pays', admin_countries_path %></li>
               </ul>
               <p class="navbar-text pull-right">
@@ -34,18 +35,10 @@
         <div class="row-fluid">
           <div class="span3">
             <div class="well sidebar-nav">
-              <ul class="nav nav-list">
-                <%= yield :navbar %>
-              </ul>
+              <%= render "admin/shared/shared_menu" %>
             </div><!--/.well -->
           </div><!--/span-->
           <div class="span9">
-            <ul class="breadcrumb">
-              <li>
-                <%= link_to 'Administration', admin_root_path %><span class="divider">/</span>
-              </li>
-              <%= yield :breadcrump %>
-            </ul>
             <%= yield %>
           </div>
           

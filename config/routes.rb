@@ -1,16 +1,10 @@
 Ludomanager2::Application.routes.draw do
   resources :editions
-
   resources :editors
-
-  devise_for :accounts
 
 
   resources :games do
     resources :editions
-  end
-  resources :accounts, :only => [:show, :edit] do
-    resources :account_games
   end
   
   
@@ -18,7 +12,8 @@ Ludomanager2::Application.routes.draw do
 
 
   namespace :admin  do
-    root :to => "admin#index"
+    root :to => "games#index"
+    resources :games
     resources :countries
   end
   # The priority is based upon order of creation:

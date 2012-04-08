@@ -1,0 +1,11 @@
+<tr>
+  <td><%= image_tag game.active_edition.box_front.image.url(:thumb), :alt => game.name.downcase %></td>
+  <td>
+    <%= game.name %>
+    <ul class="horizontal">
+      <li><i class="icon-time"></i><%= game.time_text %></li>
+      <li><i class="icon-user"></i><%= game.min %> a <%= game.max %></li>
+      <li><i class="icon-fire"></i><%= game.level_text %></li>
+    </ul>
+  </td>
+</tr>

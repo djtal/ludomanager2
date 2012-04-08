@@ -20,18 +20,10 @@
               <ul class="nav">
                 <li class="active"><%= link_to "Games", games_path %></li>
                 <li><%= link_to 'Editors', editors_path %></li>
-                <% if account_signed_in? %>
-                  <li><%= link_to "My Games", account_account_games_path(current_account) %></li>
-                <% end -%>
                 <li><a href="#contact">Contact</a></li>
               </ul>
               <p class="navbar-text pull-right">
-              <% if account_signed_in? %>
-                Logged in as <%= link_to current_account.email, account_path(current_account) %> | 
-                <%= link_to "Log Out", destroy_account_session_path, :method => :delete %> 
-              <% else %>
-                <%= link_to "Sign In", new_account_session_path %>
-              <% end %>
+          
               </p>
             </div><!--/.nav-collapse -->
           </div>
