@@ -4,7 +4,7 @@
 
 <ul class="nav nav-tabs">
   <li class="active">
-    <a href="#general", data-toggle="tab"><%= @game.name %></a>
+    <a href="#general", data-toggle="tab">General</a>
   </li>
   <li><a href="#editions">Editions</a></li>
 </ul>
@@ -14,6 +14,15 @@
   <div class="tab-pane active" id="general">
     <div class="span4">
       <%= image_tag @game.editions.primary.first.box_front.image.normal.url %>
+    </div>
+    <div class="span8">
+      <h3><%= @game.name %></h3>
+      <ul class="unstyled horizontal" id="technical">
+        <li><i class="icon-time"></i><%= @game.time.text %></li>
+        <li><i class="icon-user"></i><%= @game.min %>/ <%= @game.max %></li>
+        <li><i class="icon-fire"></i><%= @game.level.text %></li>
+      </ul>
+      
     </div>
   </div>
   <div class="tab-pane" id="extensions">

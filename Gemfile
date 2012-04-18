@@ -38,6 +38,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'bourbon'
 
 gem 'simple_form', :git => 'https://github.com/plataformatec/simple_form.git'
 gem 'devise', '~> 2.0.0'

@@ -12,4 +12,5 @@ class Game < ActiveRecord::Base
   accepts_nested_attributes_for :editions
   
   has_one :active_edition, :class_name => "Edition"
+
 end

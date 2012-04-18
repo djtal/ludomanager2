@@ -30,6 +30,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :normal do
     process :resize_and_pad => [260,180, "white"]
   end
+  
 
   # Create different versions of your uploaded files:
   # version :thumb do
