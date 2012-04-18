@@ -13,10 +13,10 @@
 <div class="tab-content">
   <div class="tab-pane active" id="general">
     <div class="span4">
-      <%= image_tag @game.editions.primary.first.box_front.image.normal.url %>
+      <%= image_tag @game.editions.primary.first.box_front.image.normal.url, :class => "box" %>
     </div>
     <div class="span8">
-      <h3><%= @game.name %></h3>
+      <h2><%= @game.name %></h2>
       <ul class="unstyled horizontal" id="technical">
         <li><i class="icon-time"></i><%= @game.time.text %></li>
         <li><i class="icon-user"></i><%= @game.min %>/ <%= @game.max %></li>

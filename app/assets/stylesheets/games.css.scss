@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import "colors.css.scss";
+@import "bourbon";
 
 .game{
   background-color: $smoke;
@@ -12,3 +13,7 @@
 
 
 #technical{font-size: 3em;}
+
+.box{
+  @include box-shadow(0 0 5px 3px $smoke);
+}
