@@ -2,7 +2,12 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.json
   def index
-    @games = Game.paginate(:per_page => 20, :page => params[:page])
+    @editor = Editor.find_by_id(params[:editor_id]) if params[:editor_id]
+    @games = if @editor
+      @editor.games.paginate(:per_page => 20, :page => params[:page])
+    else  
+      Game.paginate(:per_page => 20, :page => params[:page])
+    end
     @title = "Les Jeux"
     respond_to do |format|
       format.html # index.html.erb

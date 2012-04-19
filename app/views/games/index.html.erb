@@ -1,3 +1,24 @@
+<% if @editor -%>
+  <div class="row header">
+    <div class="span4">
+      <%= image_tag @editor.logo.image.normal.url %>
+    </div>
+    <div class="span7">
+    <div class="title"><%= @editor.name %><div class="flag f16 <%= @editor.country.code.downcase %>"></div></div>
+      <% if @editor.url.present? -%>
+        <%= link_to "Site web de l'editeur", @editor.url, :class => "icon-home"  %>
+      <% end -%>
+      <%= link_to edit_editor_path(@editor), :class => "btn" do %>
+        <i class="icon-edit"></i>&nbsp;Modifier
+      <% end -%>
+      <%= link_to new_editor_game_path(@editor), :class => "btn" do %>
+        <i class="icon-file"></i> Nouveau jeu
+      <% end -%>
+    </div>
+  </div>
+<% end -%>
+
+
 <ul class="thumbnails">
   <% @games.each do |game| %>
       <%= render game %>
@@ -10,4 +31,4 @@
 <% end -%>
 <% content_for :navbar do %>
   <%= link_to "Nouveau", new_game_path, :class => "btn btn-primary" %></li>
-<% end %>
+<% end unless @editor %>

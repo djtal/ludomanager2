@@ -1,6 +1,8 @@
 Ludomanager2::Application.routes.draw do
   resources :editions
-  resources :editors
+  resources :editors do
+    resources :games
+  end
 
 
   resources :games do

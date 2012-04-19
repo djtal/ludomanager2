@@ -17,3 +17,11 @@
 .box{
   @include box-shadow(0 0 5px 3px $smoke);
 }
+
+.header{
+  .title{ font-size:2em; margin:15px 0; display:block;}
+  margin-bottom: 15px;
+  background-color: $smoke;
+  padding: 5px;
+  margin-left: 0;
+}

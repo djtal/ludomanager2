@@ -1,7 +1,7 @@
 <ul class="thumbnails">
  <% @editors.each do |editor| -%>
  <li class="span3 game thumbnail">
-  <h3><%= link_to editor.name, editor_path(editor) %></h3>
+  <h3><%= link_to editor.name, editor_games_path(editor) %></h3>
   <%= link_to editor_path(editor) do %>
     <div class="thumbnail">
       <%= image_tag editor.logo.image.normal.url, :alt => editor.name %>

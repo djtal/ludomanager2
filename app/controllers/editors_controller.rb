@@ -10,17 +10,6 @@ class EditorsController < ApplicationController
     end
   end
 
-  # GET /editors/1
-  # GET /editors/1.json
-  def show
-    @editor = Editor.find(params[:id])
-    @title = @editor.name
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @editor }
-    end
-  end
-
   # GET /editors/new
   # GET /editors/new.json
   def new
