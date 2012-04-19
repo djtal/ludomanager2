@@ -43,11 +43,11 @@ class EditionsController < ApplicationController
   # POST /editions.json
   def create
     @game = Game.find_by_id(params[:game_id]) if params[:game_id].present?
-    @edition = @game ? @game.editions.build(params[:editions]) :  Edition.new(params[:edition])
+    @edition = @game ? @game.editions.build(params[:edition]) :  Edition.new(params[:edition])
 
     respond_to do |format|
       if @edition.save
-        format.html { redirect_to @edition, notice: 'Edition was successfully created.' }
+        format.html { redirect_to @edition.game, notice: 'Edition was successfully created.' }
         format.json { render json: @edition, status: :created, location: @edition }
       else
         format.html { render action: "new" }
