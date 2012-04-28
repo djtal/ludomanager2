@@ -16,17 +16,18 @@ gem 'wirb'
 gem 'hirb'
 gem 'map_by_method'
 
-group 'test' do 
+group 'test' do
 
 end
 
-group :production do  
+group :production do
   gem 'mysql'
 end
 
 
 group :development do
   gem 'quiet_assets'
+  gem 'rails-footnotes', '>= 3.7.5.rc4'
 end
 
 # Gems used only for assets and not required

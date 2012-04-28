@@ -3,8 +3,16 @@
     <div class="span4">
       <%= image_tag @editor.logo.image.normal.url %>
     </div>
-    <div class="span7">
-    <div class="title"><%= @editor.name %><div class="flag f16 <%= @editor.country.code.downcase %>"></div></div>
+    <div class="span8">
+      <div class="row">
+        <div class="span4">
+          <span class="title"><%= @editor.name %></span>
+        </div>
+        <div class="span1 offset2">
+          <span class="flag f16 <%= @editor.country.code.downcase %>"><%= @editor.country.name %></span>
+        </div>
+      </div>
+      <div class="row">
       <% if @editor.url.present? -%>
         <%= link_to "Site web de l'editeur", @editor.url, :class => "icon-home"  %>
       <% end -%>
@@ -14,6 +22,7 @@
       <%= link_to new_editor_game_path(@editor), :class => "btn" do %>
         <i class="icon-file"></i> Nouveau jeu
       <% end -%>
+      </div>
     </div>
   </div>
 <% end -%>

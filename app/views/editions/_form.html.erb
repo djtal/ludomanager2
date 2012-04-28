@@ -1,16 +1,27 @@
 <fieldset class="well">
   <legend>Edition du jeu</legend>
   <div class="form-inputs">
-    <%= form.input :name %>
-    <%= form.association :editor %>
+    <%= form.input :name, :placeholder => name_placeholder_for(form.object) %>
+    <%= form.association :editor, :disabled => @editor.present? %>
     <%= form.input :out_date, :discard_day => true  %>
     <%= form.association :country %>
-    <%= form.input :kind, :collection => Edition.kind.options %>
-    <%= form.input :plateform, :collection => Edition.plateform.options %>
+    <div class="row">
+      <div class="span4">
+        <%= form.input :kind, :collection => Edition.kind.options %>
+      </div>
+      <div class="span4">
+        <%= form.input :plateform, :collection => Edition.plateform.options %>
+      </div>
+    </div>
     <%= form.fields_for :box_front do |box|%>
-      <%= box.input :image, :as => :file %>
-      Ou
-      <%= box.input :remote_image_url %>
+      <div class="row">
+        <div class="span4">
+          <%= box.input :image, :as => :file %>
+        </div>
+        <div class="span4">
+          <%= box.input :remote_image_url %>
+        </div>
+      </div>
     <% end -%>
   </div>
 </fieldset>

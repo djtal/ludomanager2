@@ -1,14 +1,20 @@
 <%= simple_form_for(@game, :html => {:class => "form-horizontal"}) do |f| %>
   <%= f.error_notification %>
-  
+
   <div class="form-inputs">
   <fieldset class="well">
     <%= f.input :name %>
   </fieldset>
   <fieldset class="well">
     <legend>Caracteristiques</legend>
-      <%= f.input :min %>
-      <%= f.input :max %>
+      <div class="row">
+        <div class="span4">
+          <%= f.input :min %>
+        </div>
+        <div class="span4">
+          <%= f.input :max %>
+        </div>
+      </div>
       <%= f.input :time, :collection => Game.time.options, :class => "span3" %>
       <%= f.input :target, :collection => Game.target.options, :class => "span3" %>
       <%= f.input :level, :collection => Game.level.options, :class => "span1" %>
@@ -18,7 +24,7 @@
   <% if @game.active_edition.new_record? -%>
     <div class="form-inputs">
         <%= f.fields_for @game.active_edition do |fe| -%>
-          <%= render "editions/form", :form => fe %>
+          <%= render "editions/form", :form => fe, :edition => @game.active_edition %>
         <% end -%>
     </div>
   <% end -%>

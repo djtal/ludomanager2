@@ -5,7 +5,7 @@ class GamesController < ApplicationController
     @editor = Editor.find_by_id(params[:editor_id]) if params[:editor_id]
     @games = if @editor
       @editor.games.paginate(:per_page => 20, :page => params[:page])
-    else  
+    else
       Game.paginate(:per_page => 20, :page => params[:page])
     end
     @title = "Les Jeux"
@@ -30,8 +30,9 @@ class GamesController < ApplicationController
   # GET /games/new.json
   def new
     @game = Game.new
+    @editor = Editor.find_by_id(params[:editor_id])
     @title = "Creer un nouveau jeu "
-    @game.build_active_edition
+    @game.build_active_edition(:editor => @editor)
     @game.active_edition.build_box_front
     respond_to do |format|
       format.html # new.html.erb
