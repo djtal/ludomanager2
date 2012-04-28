@@ -1,6 +1,7 @@
-<h1>Editing editor</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @editor %> |
-<%= link_to 'Back', editors_path %>
+<%= simple_form_for(@editor) do |f| %>
+  <%= render f %>
+  <div class="form-actions">
+    <%= f.button :submit, :value => "Mettre a jour", :class => "btn btn-primary" %>
+    <%= link_to "Annuler", editors_path, :class => "btn" %>
+  </div>
+<% end -%>

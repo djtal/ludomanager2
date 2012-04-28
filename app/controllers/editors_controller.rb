@@ -14,6 +14,7 @@ class EditorsController < ApplicationController
   # GET /editors/new.json
   def new
     @editor = Editor.new
+    @editor.build_logo
     @title = "Creer un editeur"
     ariane.add "Nouvel editeur", new_editor_path
     respond_to do |format|
@@ -25,6 +26,9 @@ class EditorsController < ApplicationController
   # GET /editors/1/edit
   def edit
     @editor = Editor.find(params[:id])
+    @editor.build_logo unless @editor.logo.present?
+    ariane.add @editor.name, editor_path(@editor)
+    ariane.add "Modifier", edit_editor_path(@editor)
   end
 
   # POST /editors
