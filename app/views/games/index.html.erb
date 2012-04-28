@@ -27,13 +27,18 @@
   </div>
 <% end -%>
 
-
+<% if @games.any? -%>
 <ul class="thumbnails">
   <% @games.each do |game| %>
       <%= render game %>
   <% end %>
 </ul>
+<% else -%>
+  <p class="empty">
+  Aucun jeux  <%= "pour #{@editor.name.humanize}" if @editor %>.
+  </p>
 
+<% end -%>
 
 <% content_for :breadcrump do -%>
   <li><%= link_to @title, games_path -%></li>

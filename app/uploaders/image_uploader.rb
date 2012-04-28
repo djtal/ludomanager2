@@ -30,7 +30,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :normal do
     process :resize_and_pad => [260,180, "white"]
   end
-  
+
 
   # Create different versions of your uploaded files:
   # version :thumb do
@@ -43,7 +43,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   %w(jpg jpeg gif png)
   # end
   def default_url
-    "/images/fallback/" + [model.class.to_s.downcase,version_name, "default.png"].compact.join('_')
+    "/assets/fallback/" + [model.class.to_s.downcase,version_name, "default.png"].compact.join('_')
   end
 
   # Override the filename of the uploaded files:
