@@ -15,6 +15,7 @@ gem 'will_paginate', '~> 3.0'
 gem 'wirb'
 gem 'hirb'
 gem 'map_by_method'
+gem 'ariane'
 
 group 'test' do
 

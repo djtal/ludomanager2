@@ -9,6 +9,7 @@ class GamesController < ApplicationController
       Game.paginate(:per_page => 20, :page => params[:page])
     end
     @title = "Les Jeux"
+    ariane.add @editor.name, editor_path(@editor) if @editor
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @games }
@@ -20,6 +21,7 @@ class GamesController < ApplicationController
   def show
     @game = Game.joins(:editions).find_by_id(params[:id])
     @title = @game.name
+    ariane.add @game.name, game_path(@game)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @game }
@@ -34,6 +36,7 @@ class GamesController < ApplicationController
     @title = "Creer un nouveau jeu "
     @game.build_active_edition(:editor => @editor)
     @game.active_edition.build_box_front
+    ariane.add "Nouveau jeu", new_game_path
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @game }
@@ -43,6 +46,8 @@ class GamesController < ApplicationController
   # GET /games/1/edit
   def edit
     @game = Game.find(params[:id])
+    ariane.add @game.name, game_path(@game)
+    ariane.add "Modifer", edit_game_path(@game)
   end
 
   # POST /games
@@ -88,4 +93,12 @@ class GamesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+
+  def set_ariane
+    super
+    ariane.add "Les Jeux", games_path
+  end
+
 end

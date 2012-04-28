@@ -4,20 +4,10 @@ class EditionsController < ApplicationController
   def index
     @editions = Edition.all
 
+    ariane.add "Les Editeurs", editors_path
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @editions }
-    end
-  end
-
-  # GET /editions/1
-  # GET /editions/1.json
-  def show
-    @edition = Edition.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @edition }
     end
   end
 
@@ -26,8 +16,13 @@ class EditionsController < ApplicationController
   def new
     @game = Game.find_by_id(params[:game_id])
     @edition = @game ? @game.editions.build : Edition.new
-    @edition.name = @game.name if @game    
+    @edition.name = @game.name if @game
     @edition.build_box_front
+    if @game
+      ariane.add "Les jeux", games_path
+      ariane.add @game.name, game_path(@game)
+      ariane.add "Nouvelle edition", new_edition_path
+    end
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @edition }
@@ -83,4 +78,5 @@ class EditionsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end

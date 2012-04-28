@@ -7,7 +7,7 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>  
+<body>
   <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
           <div class="container-fluid">
@@ -24,7 +24,7 @@
                 <li><a href="#contact">Contact</a></li>
               </ul>
               <p class="navbar-text pull-right">
-          
+
               </p>
             </div><!--/.nav-collapse -->
           </div>
@@ -33,12 +33,7 @@
 
       <div class="container">
         <div class="row">
-            <ul class="breadcrumb">
-              <li>
-                <%= link_to 'Ludomanager', root_path %><span class="divider">/</span>
-              </li>
-              <%= yield :breadcrump %>
-            </ul>
+            <%= ariane.render %>
             <ul class="unstyled">
               <%= yield :navbar %>
             </ul>

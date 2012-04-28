@@ -15,7 +15,7 @@ class EditorsController < ApplicationController
   def new
     @editor = Editor.new
     @title = "Creer un editeur"
-
+    ariane.add "Nouvel editeur", new_editor_path
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @editor }
@@ -72,5 +72,11 @@ class EditorsController < ApplicationController
     end
   end
 
+  private
+
+  def set_ariane
+    super
+    ariane.add "Les Editeur", editors_path
+  end
 
 end
