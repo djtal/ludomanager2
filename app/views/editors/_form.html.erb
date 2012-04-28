@@ -1,20 +1,24 @@
 <fieldset class="well">
-  <%= form.input :name %>
-</fieldset>
-<fieldset class="well">
-  <legend></legend>
+  <legend>Caractéristiques</legend>
   <div class="form-inputs">
+    <%= form.input :name %>
     <%= form.input :url %>
     <%= form.association :country %>
   </div>
 </fieldset>
 
 <fieldset class="well">
+  <legend>Logo</legend>
   <div class="form-inputs">
     <%= form.fields_for :logo, @editor.logo do |fl| %>
-      <%= fl.input :image, :as => :file %>
-      Ou
-      <%= fl.input :remote_image_url, :as => :string, :label => "URL du logo" %>
+      <div class="row">
+        <div class="span4">
+          <%= fl.input :image, :as => :file %>
+        </div>
+        <div class="span4">
+          <%= fl.input :remote_image_url, :as => :string, :label => "URL du logo" %>
+        </div>
+      </div>
   <% end -%>
+  </div>
 </fieldset>
-</div>

@@ -19,9 +19,8 @@
             <%= link_to "Ludomanager", root_path, :class => "brand" %>
             <div class="nav-collapse">
               <ul class="nav">
-                <li class="active"><%= link_to "Games", games_path %></li>
-                <li><%= link_to 'Editors', editors_path %></li>
-                <li><a href="#contact">Contact</a></li>
+                <%= menu_item("Les Jeux", games_path, :games) %>
+                <%= menu_item("Les Editeurs", editors_path, :editors) %>
               </ul>
               <p class="navbar-text pull-right">
 

@@ -1,4 +1,7 @@
-<h2><%= @game.name %></h2>
+<div class="page-header">
+  <h2><%= @game.name %>
+  <small><%= (@game.editions.pluck(:name).uniq - [@game.name]) * ', ' %></small></h2>
+</div>
 
 <%= notice %>
 
@@ -18,7 +21,14 @@
      <% end -%>
   </ul>
   <%= link_to "#", :class => "btn btn-large btn-success" do %>
-    <i class="icon-plus-sign"></i> Ajouter a mes jeux...
+    <i class="icon-bookmark"></i> Ajouter a mes jeux...
+  <% end -%>
+
+  <%= link_to new_game_edition_path(@game), :class => "btn btn-large" do %>
+    <i class="icon-plus-sign"></i>Ajouter une editions
+  <% end -%>
+  <%= link_to edit_game_path(@game), :class => "btn btn-large" do %>
+    <i class="icon-edit"></i>Modifier
   <% end -%>
 </div>
 
@@ -27,5 +37,4 @@
   <li><%= @game.name.humanize %></li>
 <% end -%>
 <% content_for :navbar do %>
-  <li><%= link_to "Nouvelle ditions", new_game_edition_path(@game), :class => "btn" %></li>
 <% end %>

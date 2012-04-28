@@ -7,7 +7,7 @@ class Edition < ActiveRecord::Base
   belongs_to :country, :foreign_key => :lang, :class_name => Country
 
   enumerize :kind, :in => [:primary, :transaltion, :digital, :reedition], :default => :primary
-  enumerize :plateform, :in => [:board, :web, :ios, :android]
+  enumerize :plateform, :in => [:board, :web, :ios, :android], :default => :board
 
   has_one :box_front, :class_name => Image, :as => :imageable
 
