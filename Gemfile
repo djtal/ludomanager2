@@ -18,7 +18,7 @@ gem 'map_by_method'
 gem 'ariane'
 
 group 'test' do
-
+  gem 'm', '~> 1.1'
 end
 
 group :production do

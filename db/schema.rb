@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120402190642) do
+ActiveRecord::Schema.define(:version => 20120429204652) do
 
   create_table "account_games", :force => true do |t|
     t.integer  "game_id"
@@ -45,6 +45,14 @@ ActiveRecord::Schema.define(:version => 20120402190642) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "creators", :force => true do |t|
+    t.integer  "person_id"
+    t.integer  "game_id"
+    t.string   "kind"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "editions", :force => true do |t|
     t.integer "game_id"
     t.integer "editor_id"
@@ -72,6 +80,14 @@ ActiveRecord::Schema.define(:version => 20120402190642) do
     t.string   "imageable_type"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+  end
+
+  create_table "people", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "country_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

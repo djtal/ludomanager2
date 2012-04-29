@@ -14,6 +14,12 @@
     <li><i class="icon-user"></i><%= @game.min %>/ <%= @game.max %></li>
     <li><i class="icon-fire"></i><%= @game.level.text %></li>
   </ul>
+  <h3>Crée par</h3>
+  <ul class="horizontal unstyled">
+    <% @game.authors.each do |a| -%>
+      <li><%= a.fullname %></li>
+    <% end -%>
+  </ul>
   <h3>Edité par :</h3>
   <ul class="thumbnails">
      <% @game.editions.each do |edition|  -%>
