@@ -3,12 +3,13 @@ class GamesController < ApplicationController
   # GET /games.json
   def index
     @editor = Editor.find_by_id(params[:editor_id]) if params[:editor_id]
-    @games = if @editor
-      @editor.games.paginate(:per_page => 20, :page => params[:page])
+    if @editor
+      @games = @editor.games.paginate(:per_page => 20, :page => params[:page])
+      @title = "#{@editor.name} : Les jeux"
     else
-      Game.paginate(:per_page => 20, :page => params[:page])
+      @games = Game.paginate(:per_page => 20, :page => params[:page])
+      @title = "Les Jeux"
     end
-    @title = "Les Jeux"
     ariane.add @editor.name, editor_path(@editor) if @editor
     respond_to do |format|
       format.html # index.html.erb

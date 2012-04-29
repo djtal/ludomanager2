@@ -2,7 +2,7 @@ class EditorsController < ApplicationController
   # GET /editors
   # GET /editors.json
   def index
-    @editors = Editor.all
+    @editors = Editor.order("LOWER(name) asc").all
     @title = "Tous les editeurs"
     respond_to do |format|
       format.html # index.html.erb
@@ -38,7 +38,7 @@ class EditorsController < ApplicationController
 
     respond_to do |format|
       if @editor.save
-        format.html { redirect_to @editor, notice: 'Editor was successfully created.' }
+        format.html { redirect_to editor_games_path(@editor), notice: 'Editor was successfully created.' }
         format.json { render json: @editor, status: :created, location: @editor }
       else
         @title = "Creer un editeur"
@@ -55,7 +55,7 @@ class EditorsController < ApplicationController
 
     respond_to do |format|
       if @editor.update_attributes(params[:editor])
-        format.html { redirect_to @editor, notice: 'Editor was successfully updated.' }
+        format.html { redirect_to editor_games_path(@editor), notice: 'Editor was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -80,7 +80,7 @@ class EditorsController < ApplicationController
 
   def set_ariane
     super
-    ariane.add "Les Editeur", editors_path
+    ariane.add "Les Editeurs", editors_path
   end
 
 end

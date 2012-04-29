@@ -22,6 +22,11 @@
       <%= link_to new_editor_game_path(@editor), :class => "btn" do %>
         <i class="icon-file"></i> Nouveau jeu
       <% end -%>
+      <% unless @editor.editions.count > 0  -%>
+        <%= link_to editor_path(@editor), :method => :delete, :class => "btn" do %>
+          <i class="icon-"></i>Supprimer
+        <% end -%>
+      <% end -%>
       </div>
     </div>
   </div>
