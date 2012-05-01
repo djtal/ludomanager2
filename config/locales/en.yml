@@ -21,3 +21,14 @@ en:
         "4": "4"
         "5": "5"
         "danger": "Danger"
+    edition:
+      plateform:
+        primary: "Primaire"
+        transaltion: "Traduction"
+        digital: "Numérique"
+        reedition: "Re-édition"
+      kind:
+        board: "Plateau"
+        web: "Web"
+        ios: "iPhone/iPad"
+        android: "Android"

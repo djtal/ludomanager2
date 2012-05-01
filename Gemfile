@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.0'
+gem 'rails', '~> 3.2.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -46,7 +46,7 @@ end
 gem 'jquery-rails'
 gem 'bourbon'
 
-gem 'simple_form', :git => 'https://github.com/plataformatec/simple_form.git'
+gem 'simple_form', '~> 2.0.0'
 gem 'devise', '~> 2.0.0'
 
 # To use ActiveModel has_secure_password

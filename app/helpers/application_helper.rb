@@ -17,4 +17,18 @@ module ApplicationHelper
       concat(capture(&block)) if block_given?
     end
   end
+
+
+  def dropdown_button_for(text, opts = {}, &block)
+    cls = %W(#{opts.delete(:class)}) if opts[:class].present?
+    return link_to(text, "#", :class => "btn #{cls * ' '}") unless block_given?
+    cls ||= []
+    options = {
+      "link" => {
+        "data-toggle" => "dropdown"
+      }
+    }.merge(opts).with_indifferent_access
+    options["link"]["class"] = (%w(dropdown-toggle btn) + cls).join(' ')
+    render :partial => "shared/button_dropdown", :locals => {:body => capture(&block), :title => text, :opts  => options}
+  end
 end

@@ -12,10 +12,11 @@ class GamesController < ApplicationController
     end
     if params[:target].present?
       scoped = Game.where(:target => params[:target])
-      ariane.add params[:target], target_games_path(:target => params[:target])
+      ariane.add Game.target.find_value(params[:target]).text, target_games_path(:target => params[:target])
     end
     if params[:time].present?
       scoped = scoped.where(:time => params[:time])
+      ariane.add(Game.time.find_value(params[:time]).text, time_games_path(params[:time]))
     end
     @games = scoped.paginate(:per_page => 20, :page => params[:page])
     ariane.add @editor.name, editor_path(@editor) if @editor

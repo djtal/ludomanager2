@@ -26,16 +26,17 @@
         <li class="<%= "box " if @game.active_edition == edition %>span1 thumbnail"><%= image_tag  edition.editor.logo.image.thumb.url %></li>
      <% end -%>
   </ul>
-  <%= link_to "#", :class => "btn btn-large btn-success" do %>
-    <i class="icon-bookmark"></i> Ajouter a mes jeux...
-  <% end -%>
-
-  <%= link_to new_game_edition_path(@game), :class => "btn btn-large" do %>
-    <i class="icon-plus-sign"></i>Ajouter une editions
-  <% end -%>
-  <%= link_to edit_game_path(@game), :class => "btn btn-large" do %>
-    <i class="icon-edit"></i>Modifier
-  <% end -%>
+  <div class="btn-toolbar">
+    <div class="btn-group">
+    <%= link_to "#", :class => "btn btn-large btn-success" do %>
+      <i class="icon-bookmark"></i> Ajouter a mes jeux...
+    <% end -%>
+    </div>
+    <%= dropdown_button_for("Modifier", :class => "btn-large btn-info", :icon => "icon-edit") do %>
+      <li><%= link_to "Ajouter une edition", new_game_edition_path(@game) %></li>
+      <li><%= link_to "Editer la fiche", edit_game_path(@game) %></li>
+    <% end -%>
+  </div>
 </div>
 
 <% content_for :breadcrump do -%>
