@@ -14,8 +14,8 @@
 
 @import "bourbon";
 @import "bootstrap.min";
-@import "games";
 @import "colors";
+@import "games";
 @import "flags16";
 @import "flags32";
 
@@ -36,3 +36,4 @@ body{
 }
 
 h2{ color: $brown;}
+

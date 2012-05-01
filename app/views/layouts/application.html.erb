@@ -16,13 +16,13 @@
               <ul class="nav">
                 <%= menu_item("Les Jeux", games_path, :games) %>
                 <li class="divider-vertical"></li>
-                <% Game.target.options.each do |name, value| -%>
-                  <%= menu_item(name, target_games_path(:target => value), "games_#{value}", :dropdown => "dropdown_#{name}") do %>
+                <% Game.target.options.each do |name, target| -%>
+                  <%= menu_item(name, target_games_path(:target => target), "games_#{target}", :dropdown => true) do %>
                     <ul class="dropdown-menu">
-                     <li><%= link_to "Tous", target_games_path(:target => value) %></li>
+                     <li><%= link_to "Tous", target_games_path(:target => target) %></li>
                      <li class="divider"></li>
-                     <% Game.time.options.each do |name, value| %>
-                        <li><%= link_to name, "#" %></li>
+                     <% Game.time.options.each do |name, time| %>
+                        <li><%= link_to name, target_time_games_path(:target => target, :time => time) %></li>
                      <% end -%>
                     </ul>
                   <% end -%>

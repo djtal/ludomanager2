@@ -10,6 +10,8 @@ Ludomanager2::Application.routes.draw do
   resources :games do
     collection do
       get 'cat/:target' => "games#index", :as => "target"
+      get 'time/:time' => "games#index", :as => "time"
+      get 'cat/:target/time/:time' => "games#index", :as => "target_time"
     end
     resources :editions
   end

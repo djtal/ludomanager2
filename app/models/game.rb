@@ -10,6 +10,7 @@ class Game < ActiveRecord::Base
 
 
   scope :by_target, lambda { |target| where(:target => target)}
+  scope :by_time, lambda { |time| where(:time => time)}
 
   has_many :editions
   accepts_nested_attributes_for :editions
