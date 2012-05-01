@@ -1,4 +1,6 @@
 Ludomanager2::Application.routes.draw do
+  resources :people
+
   resources :editions
   resources :editors do
     resources :games
@@ -6,10 +8,13 @@ Ludomanager2::Application.routes.draw do
 
 
   resources :games do
+    collection do
+      get 'cat/:target' => "games#index", :as => "target"
+    end
     resources :editions
   end
-  
-  
+
+
   root :to => 'games#index'
 
 

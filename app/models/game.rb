@@ -8,6 +8,9 @@ class Game < ActiveRecord::Base
   enumerize :target, :in => [:children, :all, :casual, :gamer], :default => :all
   enumerize :time, :in => [:halfhour, :onehour, :onehourhalf, :twohour, :morethantwo], :default => :onehour
 
+
+  scope :by_target, lambda { |target| where(:target => target)}
+
   has_many :editions
   accepts_nested_attributes_for :editions
   has_one :active_edition, :class_name => "Edition"

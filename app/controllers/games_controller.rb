@@ -4,12 +4,17 @@ class GamesController < ApplicationController
   def index
     @editor = Editor.find_by_id(params[:editor_id]) if params[:editor_id]
     if @editor
-      @games = @editor.games.paginate(:per_page => 20, :page => params[:page])
+      scoped = @editor.games
       @title = "#{@editor.name} : Les jeux"
     else
-      @games = Game.paginate(:per_page => 20, :page => params[:page])
+      scoped = Game
       @title = "Les Jeux"
     end
+    if params[:target].present?
+      scoped = Game.where(:target => params[:target])
+      ariane.add params[:target], target_games_path(:target => params[:target])
+    end
+    @games = scoped.paginate(:per_page => 20, :page => params[:page])
     ariane.add @editor.name, editor_path(@editor) if @editor
     respond_to do |format|
       format.html # index.html.erb
