@@ -55,7 +55,10 @@ class GamesController < ApplicationController
 
   # GET /games/1/edit
   def edit
-    @game = Game.find(params[:id])
+    @game = Game.joins(:editions).find(params[:id])
+    @edition = Edition.new(:game => @game)
+    @edition.name = @game.name if @game
+    @edition.build_box_front
     ariane.add @game.name, game_path(@game)
     ariane.add "Modifer", edit_game_path(@game)
   end

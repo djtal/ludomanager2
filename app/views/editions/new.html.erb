@@ -8,17 +8,3 @@
     <%= link_to "Annuler", games_path, :class => "btn" %>
   </div>
 <% end -%>
-
-<% content_for :breadcrump do -%>
-  <% if @game -%>
-    <li><%= link_to "Les Jeux", games_path %><span class="divider">/</span></li>
-    <li><%= link_to @game.name, game_path(@game) %><span class="divider">/</span></li>
-    <li><%= link_to "Les editions", game_editions_path(@game) %><span class="divider">/</span></li>
-  <% elsif @editor -%>
-    <li><%= link_to "Les Editeurs", editors_path %><span class="divider">/</span></li>
-    <li><%= link_to @editor.name, editor_path(@editor) %><span class="divider">/</span></li>
-  <% end -%>
-  <li>Creer une editions</li>
-<% end -%>
-<% content_for :navbar do %>
-<% end -%>
