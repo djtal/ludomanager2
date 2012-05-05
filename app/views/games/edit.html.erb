@@ -2,19 +2,14 @@
   <h2>Modification de <%= @game.name %></h2>
 </div>
 
-<ul class="nav nav-tabs">
-  <li class="active"><%= link_to "Géneral", edit_game_path(@game), :'data-toggle' => "tab" , :'data-target' => "#general" %></li>
-  <li><%= link_to "Les éditions", game_editions_path(@game), :'data-toggle' => "tab", :'data-target' => "#editions" %></li>
-  <li><%= link_to "Nouvelle edition", new_game_edition_path(@game), :'data-toggle' => "tab", :'data-target' => "#new_edition" %></li>
-</ul>
-<div class="tab-content">
-  <div class="tab-pane active" id="general">
+<%= tabs do |t| %>
+  <%= t.add "Géneral", edit_game_path(@game), :active => true do %>
     <%= render 'form' %>
-  </div>
-  <div class="tab-pane" id="editions">
+  <% end -%>
+  <%= t.add "Les éditions", game_editions_path(@game) do  %>
     <%= render 'editions/list', editions: @game.editions %>
-  </div>
-  <div class="tab-pane" id="new_edition">
+  <% end -%>
+  <%= t.add "Nouvelle edition", new_game_edition_path(@game) do  %>
     <%= simple_form_for([@game, @edition]) do |f| %>
       <%= f.error_notification %>
       <%= render 'editions/form', form: f %>
@@ -24,5 +19,5 @@
         <%= link_to "Annuler", games_path, class: "btn" %>
       </div>
     <% end -%>
-  </div>
-</div>
+  <% end -%>
+<% end -%>

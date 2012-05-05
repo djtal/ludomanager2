@@ -31,4 +31,72 @@ module ApplicationHelper
     options["link"]["class"] = (%w(dropdown-toggle btn) + cls).join(' ')
     render :partial => "shared/button_dropdown", :locals => {:body => capture(&block), :title => text, :opts  => options}
   end
+
+  class Tabs
+    def initialize(context)
+      @context = context
+      @tabs = []
+      @tabs_body = {}
+      yield self
+    end
+
+    def add(name,  url, opts = {}, &block)
+      sym = name.downcase.parameterize
+      tab = {
+        :url => url,
+        :sym => sym,
+        :name => name,
+        :active => false
+      }.merge(opts)
+      @tabs << tab
+      @tabs_body[sym] = @context.capture(&block)
+      ""
+    end
+
+    def render
+     content = ActiveSupport::SafeBuffer.new
+     content << header
+     content << body
+     content
+    end
+
+    private
+
+    def header
+      content = @tabs.inject(ActiveSupport::SafeBuffer.new) do |buffer, tab|
+        opts = {
+          :'data-toggle' => "tab",
+          :'data-target' => "##{tab[:sym]}"
+        }
+        opts[:class] = tab[:class] if tab[:class]
+        opts[:id] = tab[:id] if tab[:id]
+        buffer << content_tag(:li, link_to(tab[:name], tab[:url], opts), :class => tab[:active] ? "active" : "")
+        buffer
+      end
+      content_tag(:ul, content, :class => "nav nav-tabs")
+    end
+
+    def body
+      content = @tabs.inject(ActiveSupport::SafeBuffer.new) do |buffer, tab|
+        classes = %w(tab-pane)
+        classes << "active" if tab[:active]
+        buffer << content_tag(:div, @tabs_body[tab[:sym]], :class => classes * ' ', :id => tab[:sym])
+        buffer
+      end
+      content_tag(:div, content, :class => "tab-content")
+    end
+
+    def method_missing(method, *args, &block)
+      @context.send(method, *args, &block)
+    end
+
+  end
+
+  def tabs(&block)
+    Tabs.new(self, &block).render
+  end
+
+  def tab_status_class(tab)
+    "active" if tab == @active_tag
+  end
 end
