@@ -1,23 +1,23 @@
 <table class="table table-striped editions">
   <thead>
     <tr>
-      <th></th>
       <th>Boite</th>
       <th>Nom</th>
       <th>Langue</th>
       <th>Editeur</th>
       <th>Primaire</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% editions.each do |edition| -%>
       <tr>
-        <td><i class="icon-trash"></i></td>
         <td><%= image_tag(edition.box_front.image.thumb.url) %></td>
         <td><%= edition.name %></td>
         <td><%= edition.country.name %></td>
         <td><%= edition.editor.name %></td>
         <td><%= edition_status(edition) %></td>
+        <td><%= link_to_button "Supprimer", game_edition_path(edition.game, edition), method: :delete,  icon: "trash", class: "btn-danger" %></td>
       </tr>
     <% end -%>
   </tbody>

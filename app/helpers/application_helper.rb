@@ -32,6 +32,22 @@ module ApplicationHelper
     render :partial => "shared/button_dropdown", :locals => {:body => capture(&block), :title => text, :opts  => options}
   end
 
+  def icon_tag(icon)
+    icon = icon.gsub(/^icon/, '')
+    "<i class=icon-#{icon}></i>".html_safe
+  end
+
+  def link_to_button(name, url, opts = {})
+    icon = opts.delete(:icon)
+    classes = %w(btn)
+    classes << opts.delete(:class).split(' ') if opts[:class]
+    opts[:class] = classes * ' '
+    link_to url, opts do
+      concat(icon_tag(icon)) if icon
+      concat(" #{name}".html_safe)
+    end
+  end
+
   class Tabs
     def initialize(context)
       @context = context
