@@ -17,7 +17,12 @@
         <td><%= edition.country.name %></td>
         <td><%= edition.editor.name %></td>
         <td><%= edition_status(edition) %></td>
-        <td><%= link_to_button "Supprimer", game_edition_path(edition.game, edition), method: :delete,  icon: "trash", class: "btn-danger" %></td>
+        <td>
+          <%= dropdown_button_for "Gerer", icon: "icon-edit" do %>
+            <li><%= link_to "Supprimer", game_edition_path(edition.game, edition), method: :delete %></li>
+            <li><%= link_to "Modifer", edit_game_edition_path(edition.game, edition)  %></li>
+          <% end -%>
+        </td>
       </tr>
     <% end -%>
   </tbody>

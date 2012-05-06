@@ -17,14 +17,22 @@ class EditionsController < ApplicationController
     end
   end
 
+  def edit
+    @game = Game.find_by_id(params[:game_id])
+    @edition = @game.editions.find(params[:id])
+    ariane.add @game.name, game_path(@game)
+    ariane.add "#{@edition.name} (#{@edition.editor.name})"
+  end
+
   # PUT /editions/1
   # PUT /editions/1.json
   def update
-    @edition = Edition.find(params[:id])
+    @game = Game.find_by_id(params[:game_id])
+    @edition = @game.editions.find(params[:id])
 
     respond_to do |format|
       if @edition.update_attributes(params[:edition])
-        format.html { redirect_to @edition, notice: 'Edition was successfully updated.' }
+        format.html { redirect_to kind_edit_game_path(@game, :editions), notice: 'Edition was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -36,11 +44,12 @@ class EditionsController < ApplicationController
   # DELETE /editions/1
   # DELETE /editions/1.json
   def destroy
-    @edition = Edition.find(params[:id])
+    @game = Game.find_by_id(params[:game_id])
+    @edition = @game.editions.find(params[:id])
     @edition.destroy
 
     respond_to do |format|
-      format.html { redirect_to editions_url }
+      format.html { redirect_to kind_edit_game_path(@game, :editions) }
       format.json { head :no_content }
     end
   end

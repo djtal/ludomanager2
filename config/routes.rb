@@ -15,7 +15,7 @@ Ludomanager2::Application.routes.draw do
     member do
       get 'edit/:kind' =>  "games#edit", as: "kind_edit"
     end
-    resources :editions, only: [:create, :update, :destroy]
+    resources :editions, only: [:create, :update, :destroy, :edit]
   end
 
 
