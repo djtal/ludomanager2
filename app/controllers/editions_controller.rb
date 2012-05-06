@@ -1,38 +1,4 @@
 class EditionsController < ApplicationController
-  # GET /editions
-  # GET /editions.json
-  def index
-    @editions = Edition.all
-
-    ariane.add "Les Editeurs", editors_path
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @editions }
-    end
-  end
-
-  # GET /editions/new
-  # GET /editions/new.json
-  def new
-    @game = Game.find_by_id(params[:game_id])
-    @edition = @game ? @game.editions.build : Edition.new
-    @edition.name = @game.name if @game
-    @edition.build_box_front
-    if @game
-      ariane.add "Les jeux", games_path
-      ariane.add @game.name, game_path(@game)
-      ariane.add "Nouvelle edition", new_edition_path
-    end
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @edition }
-    end
-  end
-
-  # GET /editions/1/edit
-  def edit
-    @edition = Edition.find(params[:id])
-  end
 
   # POST /editions
   # POST /editions.json

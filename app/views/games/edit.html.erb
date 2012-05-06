@@ -3,13 +3,13 @@
 </div>
 
 <%= tabs do |t| %>
-  <%= t.add "Géneral", edit_game_path(@game), :active => true do %>
+  <%= t.add "Géneral", kind_edit_game_path(@game, :general), :active => "general" == params[:kind] do %>
     <%= render 'form' %>
   <% end -%>
-  <%= t.add "Les éditions", game_editions_path(@game) do  %>
+  <%= t.add "Les éditions", kind_edit_game_path(@game, :editions), :active => "editions" == params[:kind] do  %>
     <%= render 'editions/list', editions: @game.editions %>
   <% end -%>
-  <%= t.add "Nouvelle edition", new_game_edition_path(@game) do  %>
+  <%= t.add "Nouvelle edition", kind_edit_game_path(@game, :new_edition), :active => "new_edition" == params[:kind]  do  %>
     <%= simple_form_for([@game, @edition]) do |f| %>
       <%= f.error_notification %>
       <%= render 'editions/form', form: f %>

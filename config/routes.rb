@@ -1,7 +1,6 @@
 Ludomanager2::Application.routes.draw do
   resources :people
 
-  resources :editions
   resources :editors do
     resources :games
   end
@@ -13,7 +12,10 @@ Ludomanager2::Application.routes.draw do
       get 'time/:time' => "games#index", :as => "time"
       get 'cat/:target/time/:time' => "games#index", :as => "target_time"
     end
-    resources :editions
+    member do
+      get 'edit/:kind' =>  "games#edit", as: "kind_edit"
+    end
+    resources :editions, only: [:create, :update, :destroy]
   end
 
 
