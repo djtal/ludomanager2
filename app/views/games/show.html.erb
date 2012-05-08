@@ -40,9 +40,12 @@
   </div>
 </div>
 
-<% content_for :breadcrump do -%>
-  <li><%= link_to "Les jeux", games_path -%><span class="divider">/</span></li>
-  <li><%= @game.name.humanize %></li>
-<% end -%>
-<% content_for :navbar do %>
-<% end %>
+<h3>Les extensions</h3>
+<ul class="thumbnails">
+   <% @game.extensions.each do |ext|  -%>
+      <li class="span2 game thumbnail">
+        <h4><%= link_to ext.name, game_path(ext) %></h4>
+        <%= image_tag ext.active_edition.box_front.image.boxed.url  %>
+      </li>
+   <% end -%>
+</ul>
