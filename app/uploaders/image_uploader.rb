@@ -27,6 +27,10 @@ class ImageUploader < CarrierWave::Uploader::Base
     process :resize_and_pad => [50,50, "white"]
   end
 
+  version :boxed do
+    process :resize_and_pad => [160, 120, "white"]
+  end
+
   version :normal do
     process :resize_and_pad => [260,180, "white"]
   end

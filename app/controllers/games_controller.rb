@@ -44,8 +44,9 @@ class GamesController < ApplicationController
     @game = Game.new
     @editor = Editor.find_by_id(params[:editor_id])
     @title = "Creer un nouveau jeu "
-    @game.build_active_edition(:editor => @editor)
+    @game.build_active_edition(editor: @editor)
     @game.active_edition.build_box_front
+    @base_games = Game.where(base_game_id: nil)
     ariane.add "Nouveau jeu", new_game_path
     respond_to do |format|
       format.html # new.html.erb

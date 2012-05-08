@@ -19,6 +19,13 @@
   </fieldset>
   </div>
 
+  <fieldset class="well">
+    <legend>Jeu de base</legend>
+    <div class="form-inputs">
+      <%= f.association :base_game, collection: @base_games %>
+    </div>
+  </fieldset>
+
   <% if @game.active_edition.new_record? -%>
     <div class="form-inputs">
         <%= f.fields_for :active_edition, @game.active_edition do |fe| -%>

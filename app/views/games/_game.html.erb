@@ -1,6 +1,6 @@
 <li class="span3 game thumbnail">
   <h3><%= link_to game.name, game_path(game) %></h3>
-  <%= image_tag game.active_edition.box_front.image.normal.url  %>
+  <%= image_tag game.active_edition.box_front.image.normal.url %>
   <ul class="horizontal">
     <li><i class="icon-time"></i><%= game.time_text %></li>
     <li><i class="icon-user"></i><%= game.min %> a <%= game.max %></li>

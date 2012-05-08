@@ -23,4 +23,8 @@ class Game < ActiveRecord::Base
   accepts_nested_attributes_for :authors
   has_many :artists, :through => :creator_artists, :source => :person
   accepts_nested_attributes_for :artists
+
+  has_many :extensions, :class_name => "Game", :foreign_key => "base_game_id"
+  belongs_to :base_game, :class_name => "Game"
+
 end
