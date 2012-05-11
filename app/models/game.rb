@@ -8,10 +8,6 @@ class Game < ActiveRecord::Base
   enumerize :target, :in => [:children, :all, :casual, :gamer], :default => :all
   enumerize :time, :in => [:halfhour, :onehour, :onehourhalf, :twohour, :morethantwo], :default => :onehour
 
-
-  scope :by_target, lambda { |target| where(:target => target)}
-  scope :by_time, lambda { |time| where(:time => time)}
-
   has_many :editions
   accepts_nested_attributes_for :editions
   has_one :active_edition, :class_name => "Edition"
@@ -27,4 +23,7 @@ class Game < ActiveRecord::Base
   has_many :extensions, :class_name => "Game", :foreign_key => "base_game_id"
   belongs_to :base_game, :class_name => "Game"
 
+  scope :by_target, lambda { |target| where(:target => target)}
+  scope :by_time, lambda { |time| where(:time => time)}
+  scope :possible_extensions, where(:base_game_id => nil)
 end

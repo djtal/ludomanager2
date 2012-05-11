@@ -65,7 +65,7 @@ module ApplicationHelper
         :active => false
       }.merge(opts)
       @tabs << tab
-      @tabs_body[sym] = @context.capture(&block)
+      @tabs_body[sym] = @context.capture(&block) if block_given?
       ""
     end
 

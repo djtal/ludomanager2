@@ -40,12 +40,14 @@
   </div>
 </div>
 
-<h3>Les extensions</h3>
-<ul class="thumbnails">
-   <% @game.extensions.each do |ext|  -%>
-      <li class="span2 game thumbnail">
-        <h4><%= link_to ext.name, game_path(ext) %></h4>
-        <%= image_tag ext.active_edition.box_front.image.boxed.url  %>
-      </li>
-   <% end -%>
-</ul>
+<% unless @game.base_game_id.present? -%>
+  <h3>Les extensions</h3>
+  <ul class="thumbnails">
+     <% @game.extensions.each do |ext|  -%>
+        <li class="span2 game thumbnail">
+          <h4><%= link_to ext.name, game_path(ext) %></h4>
+          <%= image_tag ext.active_edition.box_front.image.boxed.url  %>
+        </li>
+     <% end -%>
+  </ul>
+<% end -%>

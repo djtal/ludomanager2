@@ -60,6 +60,10 @@ class GamesController < ApplicationController
     @edition = Edition.new(:game => @game)
     @edition.name = @game.name if @game
     @edition.build_box_front
+    if params[:kind] == "new_extension"
+      @base = Game.possible_extensions.where(["id != ?", @game.id])
+      @extensions = 3.times.inject([]){ |acc, _| acc << @game.extensions.build}
+    end
     ariane.add @game.name, game_path(@game)
     ariane.add "Modifer", edit_game_path(@game)
   end
@@ -78,6 +82,10 @@ class GamesController < ApplicationController
         format.json { render json: @game.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def create_extension
+
   end
 
   # PUT /games/1
