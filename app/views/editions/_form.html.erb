@@ -2,6 +2,7 @@
   <legend>Edition du jeu</legend>
   <div class="form-inputs">
     <%= form.input :name, :placeholder => name_placeholder_for(form.object) %>
+    <%= form.input :game_id, :as => :hidden %>
     <%= form.association :editor, :disabled => @editor.present? %>
     <%= form.input :out_date, :as => :date,  :discard_day => true  %>
     <%= form.association :country %>

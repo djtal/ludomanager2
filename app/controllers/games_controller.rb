@@ -44,8 +44,8 @@ class GamesController < ApplicationController
     @game = Game.new
     @editor = Editor.find_by_id(params[:editor_id])
     @title = "Creer un nouveau jeu "
-    @game.build_active_edition(editor: @editor)
-    @game.active_edition.build_box_front
+    @edition = @game.editions.build(editor: @editor)
+    @edition.build_box_front
     @base_games = Game.where(base_game_id: nil)
     ariane.add "Nouveau jeu", new_game_path
     respond_to do |format|
@@ -76,6 +76,8 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       if @game.save
+        @game.active_edition = @game.editions.first
+        @game.save
         format.html { redirect_to @game, notice: 'Game was successfully created.' }
         format.json { render json: @game, status: :created, location: @game }
       else

@@ -6,7 +6,7 @@
 <%= notice %>
 
 <div class="span4">
-  <%= image_tag @game.editions.primary.first.box_front.image.normal.url, :class => "box" %>
+  <%= image_tag @game.active_edition.box_front.image.normal.url, :class => "box" %>
 </div>
 <div class="span8">
   <ul class="unstyled horizontal" id="technical">

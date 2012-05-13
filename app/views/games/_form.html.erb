@@ -26,10 +26,10 @@
     </div>
   </fieldset>
 
-  <% if @game.active_edition.new_record? -%>
+  <% if @edition -%>
     <div class="form-inputs">
-        <%= f.fields_for :active_edition, @game.active_edition do |fe| -%>
-          <%= render "editions/form", :form => fe, :edition => @game.active_edition %>
+        <%= f.fields_for :editions, @edition do |fe| -%>
+          <%= render "editions/form", :form => fe, :edition => @edition %>
         <% end -%>
     </div>
   <% end -%>

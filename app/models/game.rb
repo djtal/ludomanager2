@@ -1,6 +1,7 @@
 class Game < ActiveRecord::Base
   include Enumerize
 
+
   validates :name, :presence => true
   #validates_with PlayerValidator
 
@@ -10,7 +11,7 @@ class Game < ActiveRecord::Base
 
   has_many :editions
   accepts_nested_attributes_for :editions
-  has_one :active_edition, :class_name => "Edition"
+  belongs_to :active_edition, :class_name => "Edition"
   accepts_nested_attributes_for :active_edition
 
   has_many :creator_authors, :class_name => "Creator", :conditions => {:kind => :author}
@@ -26,4 +27,5 @@ class Game < ActiveRecord::Base
   scope :by_target, lambda { |target| where(:target => target)}
   scope :by_time, lambda { |time| where(:time => time)}
   scope :possible_extensions, where(:base_game_id => nil)
+
 end
