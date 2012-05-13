@@ -60,6 +60,7 @@ class GamesController < ApplicationController
     @edition = Edition.new(:game => @game)
     @edition.name = @game.name if @game
     @edition.build_box_front
+    @editions = @game.editions.order(out_date: :desc)
     if params[:kind] == "new_extension"
       @base = Game.possible_extensions.where(["id != ?", @game.id])
       @extensions = 3.times.inject([]){ |acc, _| acc << @game.extensions.build}

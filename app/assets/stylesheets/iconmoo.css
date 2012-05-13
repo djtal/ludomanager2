@@ -1,0 +1,75 @@
+@font-face {
+	font-family: 'IcoMoon';
+	src: url('icomoon.eot');
+	src: url('icomoon.eot?#iefix') format('embedded-opentype'),
+		url('icomoon.svg#IcoMoon') format('svg'),
+		url('icomoon.woff') format('woff'),
+		url('icomoon.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+/* sprites.less reset */
+[class^="iconmoo-"], [class*=" iconmoo-"] {
+    display: inline;
+    width: auto;
+    height: auto;
+    line-height: inherit;
+    vertical-align: baseline;
+    background-image: none;
+    background-position: 0% 0%;
+    background-repeat: repeat;
+}
+li[class^="iconmoo-"], li[class*=" iconmoo-"] {
+    display: block;
+}
+/*  Font Awesome styles
+    ------------------------------------------------------- */
+[class^="iconmoo-"]:before, [class*=" iconmoo-"]:before {
+    font-family: IcoMoon;
+    font-weight: normal;
+    font-style: normal;
+    display: inline-block;
+    text-decoration: inherit;
+}
+a [class^="iconmoo-"], a [class*=" iconmoo-"] {
+    display: inline-block;
+    text-decoration: inherit;
+}
+/* makes the font 33% larger relative to the icon container */
+.icon-large:before {
+    vertical-align: top;
+    font-size: 1.3333333333333333em;
+}
+.btn [class^="iconmoo-"], .btn [class*=" iconmoo-"] {
+    /* keeps button heights with and without icons the same */
+    line-height: .9em;
+}
+li [class^="iconmoo-"], li [class*=" iconmoo-"] {
+    display: inline-block;
+    width: 1.25em;
+    text-align: center;
+}
+li .icon-large[class^="iconmoo-"], li .icon-large[class*=" iconmoo-"] {
+    /* 1.5 increased font size for icon-large * 1.25 width */
+    width: 1.875em;
+}
+li[class^="iconmoo-"], li[class*=" iconmoo-"] {
+    margin-left: 0;
+    list-style-type: none;
+}
+li[class^="iconmoo-"]:before, li[class*=" iconmoo-"]:before {
+    text-indent: -2em;
+    text-align: center;
+}
+li[class^="iconmoo-"].icon-large:before, li[class*=" iconmoo-"].icon-large:before {
+    text-indent: -1.3333333333333333em;
+}
+.iconmoo-apple:before { content: "\e094"; }
+.iconmoo-android:before { content: "\e095"; }
+.iconmoo-windows:before { content: "\e096"; }
+.iconmoo-html5:before { content: "\e097"; }
+.iconmoo-grid-view:before { content: "\e098"; }
+.iconmoo-puzzle:before { content: "\e100"; }
+.iconmoo-cube:before { content: "\e101"; }

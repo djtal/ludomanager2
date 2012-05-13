@@ -32,16 +32,24 @@ module ApplicationHelper
     render :partial => "shared/button_dropdown", :locals => {:body => capture(&block), :title => text, :opts  => options}
   end
 
-  def icon_tag(icon)
+  def icon_tag(icon, opts = {})
     icon = icon.gsub(/^icon/, '')
-    "<i class=icon-#{icon}></i>".html_safe
+    set = opts.delete("icon-set") || ""
+    classes = opts.delete(:class) || ""
+    classes = classes.split(" ")
+    classes << "icon#{set}-#{icon}"
+    content_tag(:i, "",  :class => classes)
   end
 
   def link_to_button(name, url, opts = {})
     icon = opts.delete(:icon)
+    disabled = opts.delete(:disabled)
     classes = %w(btn)
     classes << opts.delete(:class).split(' ') if opts[:class]
-    opts[:class] = classes * ' '
+    classes << "disabled" if disabled
+    opts[:class] = classes.uniq * ' '
+    url = "#" if disabled
+    opts.delete(:method) if disabled
     link_to url, opts do
       concat(icon_tag(icon)) if icon
       concat(" #{name}".html_safe)

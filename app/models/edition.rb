@@ -14,4 +14,8 @@ class Edition < ActiveRecord::Base
   accepts_nested_attributes_for :box_front
 
   scope :primary, where(:kind => :primary)
+
+  def active?
+    game.active_edition == self
+  end
 end

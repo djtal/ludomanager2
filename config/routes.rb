@@ -17,7 +17,11 @@ Ludomanager2::Application.routes.draw do
       post 'link/extensions' => "games#link_extensions", as: "link_extensions"
       put  'unlink/extensions/:extension_id' => "games#unlink_extensions", as: "unlink_extensions"
     end
-    resources :editions, only: [:create, :update, :destroy, :edit]
+    resources :editions, only: [:create, :update, :destroy, :edit] do
+      member do
+        put 'make_active' => "editions#make", as: "make_active"
+      end
+    end
   end
 
 

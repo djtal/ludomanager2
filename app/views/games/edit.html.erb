@@ -8,7 +8,7 @@
   <% end -%>
 
   <%= t.add "Les éditions", kind_edit_game_path(@game, :editions), :active => "editions" == params[:kind] do  %>
-    <%= render 'editions/list', editions: @game.editions %>
+    <%= render 'editions/list', editions: @editions %>
   <% end -%>
 
   <%= t.add "Nouvelle edition", kind_edit_game_path(@game, :new_edition), :active => "new_edition" == params[:kind]  do  %>
@@ -39,23 +39,27 @@
     <% else -%>
       <%= link_to_button "Ajouter", kind_edit_game_path(@game, :new_extension), :icon => "add" %>
     <% end -%>
-      <table class="table table-striped games">
-         <thead>
-           <tr>
-             <td>Boite</td>
-             <td>Nom</td>
-             <td></td>
-           </tr>
-         </thead>
-         <tbody>
-           <% @game.extensions.reject(&:new_record?).each do |ext| -%>
-            <tr>
-              <td><%= image_tag(ext.active_edition.box_front.image.thumb) %></td>
-              <td><%= ext.name %></td>
-              <td><%= link_to_button("Enlever", unlink_extensions_game_path(@game, ext), :method => :put) %></td>
-            </tr>
-           <% end -%>
-         </tbody>
-      </table>
+      <% if @game.extensions.any? -%>
+        <table class="table table-striped games">
+           <thead>
+             <tr>
+               <td>Boite</td>
+               <td>Nom</td>
+               <td></td>
+             </tr>
+           </thead>
+           <tbody>
+             <% @game.extensions.reject(&:new_record?).each do |ext| -%>
+              <tr>
+                <td><%= image_tag(ext.active_edition.box_front.image.thumb) %></td>
+                <td><%= ext.name %></td>
+                <td><%= link_to_button("Enlever", unlink_extensions_game_path(@game, ext), :method => :put) %></td>
+              </tr>
+             <% end -%>
+           </tbody>
+        </table>
+      <% else -%>
+        <p class="well empty">Ce jeu ne comporte aucune extensions a l'heure actuelle</p>
+      <% end -%>
   <% end -%>
 <% end -%>

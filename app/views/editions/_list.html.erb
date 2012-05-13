@@ -1,11 +1,13 @@
-<table class="table table-striped editions">
+<table class="table table-striped games">
   <thead>
     <tr>
       <th>Boite</th>
+      <th></th>
       <th>Nom</th>
       <th>Langue</th>
       <th>Editeur</th>
-      <th>Primaire</th>
+      <th>Type</th>
+      <th>Date de sortie</th>
       <th></th>
     </tr>
   </thead>
@@ -13,15 +15,18 @@
     <% editions.each do |edition| -%>
       <tr>
         <td><%= image_tag(edition.box_front.image.thumb.url) %></td>
-        <td><%= edition.name %></td>
+        <td><%= plateform_icon(edition.plateform.to_sym, :class => "icon-large") %></td>
+        <td><%= edition.name %> <%= active_edition_tag(edition) %></td>
         <td><%= edition.country.name %></td>
         <td><%= edition.editor.name %></td>
-        <td><%= edition_status(edition) %></td>
+        <td><%= edition.kind.text %></td>
+        <td><%= l edition.out_date, format: :simple %></td>
         <td>
-          <%= dropdown_button_for "Gerer", icon: "icon-edit" do %>
-            <li><%= link_to "Supprimer", game_edition_path(edition.game, edition), method: :delete %></li>
-            <li><%= link_to "Modifer", edit_game_edition_path(edition.game, edition)  %></li>
-          <% end -%>
+          <div class="btn-group">
+            <%= link_to_button "", edit_game_edition_path(edition.game, edition), icon: "edit" %>
+            <%= link_to_button "", make_active_game_edition_path(edition.game, edition), method: :put, icon: "key", disabled: edition.active? %>
+            <%= link_to_button "", game_edition_path(edition.game, edition), method: :delete, icon: "trash" %>
+          </div>
         </td>
       </tr>
     <% end -%>
