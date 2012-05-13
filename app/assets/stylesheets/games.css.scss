@@ -9,8 +9,11 @@
   background-color: $smoke;
   padding:0;
   h3, h4{text-align: center;}
+  h3 { min-height: 54px;}
+  h3 a{ @include box(vertical, center, center); min-height: 54px;}
 }
 
+h3.page-section { margin-bottom: 10px; border-bottom: solid 1px #EEE}
 
 #technical{font-size: 2em;}
 
