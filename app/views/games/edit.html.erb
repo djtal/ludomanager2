@@ -33,7 +33,7 @@
         <% end -%>
         <div class="form-actions">
           <%= f.button :submit, value: "Ajouter", class: "btn btn-primary" %>
-          <%= link_to "Annuler", games_path, class: "btn" %>
+          <%= link_to "Annuler", kind_edit_game_path(@game, :extensions), class: "btn" %>
         </div>
       <% end -%>
     <% else -%>
