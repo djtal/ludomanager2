@@ -84,13 +84,23 @@ class GamesController < ApplicationController
     end
   end
 
-  def create_extension
+  def link_extensions
     @game = Game.find_by_id(params[:id])
     games = params[:extensions][:game].values.map{ |h| h[:id] }
     Game.where(id: games).update_all(base_game_id: @game.id)
     respond_to do |wants|
       wants.html { redirect_to @game, notice: 'Extensions added' }
     end
+  end
+
+  def unlink_extensions
+    @game = Game.find_by_id(params[:id])
+    extension = Game.find_by_id(params[:extension_id])
+    extension.update_attributes(base_game_id: nil)
+    respond_to do |wants|
+      wants.html { redirect_to kind_edit_game_path(@game, :extensions), notice: "Extension unlinked"  }
+    end
+
   end
 
   # PUT /games/1

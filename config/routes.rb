@@ -14,8 +14,8 @@ Ludomanager2::Application.routes.draw do
     end
     member do
       get 'edit/:kind' =>  "games#edit", as: "kind_edit"
-      get 'extension' => "games#new_extention", as: "new_extension"
-      post 'extension' => "games#create_extension", as: "extension"
+      post 'link/extensions' => "games#link_extensions", as: "link_extensions"
+      put  'unlink/extensions/:extension_id' => "games#unlink_extensions", as: "unlink_extensions"
     end
     resources :editions, only: [:create, :update, :destroy, :edit]
   end

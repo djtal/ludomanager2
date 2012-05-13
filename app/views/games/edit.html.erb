@@ -25,7 +25,7 @@
 
   <%= t.add "Les extensions", kind_edit_game_path(@game, :extensions), :active => %w(extensions new_extension).include?(params[:kind]) do %>
     <% if @extensions && @extensions.any? -%>
-      <%= simple_form_for("extensions",  url: extension_game_path(@game), method: :post, html: {class: 'form-horizontal'}) do |f| %>
+      <%= simple_form_for("extensions",  url: link_extensions_game_path(@game), method: :post, html: {class: 'form-horizontal'}) do |f| %>
         <% @extensions.each_with_index do |ext, index| %>
           <%= f.simple_fields_for ext, :index => index do |ff| -%>
             <%= ff.input :id, collection: @base, label_method: :name, value_method: :id, label: "Nom de l' extension" %>
@@ -39,8 +39,23 @@
     <% else -%>
       <%= link_to_button "Ajouter", kind_edit_game_path(@game, :new_extension), :icon => "add" %>
     <% end -%>
-    <ul class="thumbnails">
-      <%= render @game.extensions.reject{ |ext| ext.new_record? } %>
-    </ul>
+      <table class="table table-striped games">
+         <thead>
+           <tr>
+             <td>Boite</td>
+             <td>Nom</td>
+             <td></td>
+           </tr>
+         </thead>
+         <tbody>
+           <% @game.extensions.reject(&:new_record?).each do |ext| -%>
+            <tr>
+              <td><%= image_tag(ext.active_edition.box_front.image.thumb) %></td>
+              <td><%= ext.name %></td>
+              <td><%= link_to_button("Enlever", unlink_extensions_game_path(@game, ext), :method => :put) %></td>
+            </tr>
+           <% end -%>
+         </tbody>
+      </table>
   <% end -%>
 <% end -%>
