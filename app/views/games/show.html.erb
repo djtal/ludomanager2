@@ -23,7 +23,9 @@
   <h3>Edité par :</h3>
   <ul class="thumbnails">
      <% @game.editions.each do |edition|  -%>
-        <li class="<%= "box " if @game.active_edition == edition %>span1 thumbnail"><%= image_tag  edition.editor.logo.image.thumb.url %></li>
+        <li class="<%= "box " if @game.active_edition == edition %>span1 thumbnail">
+          <%= image_tag  edition.editor.logo.image.thumb.url %>
+        </li>
      <% end -%>
   </ul>
   <div class="btn-toolbar">
@@ -41,8 +43,9 @@
   </div>
 </div>
 
-<% unless @game.base_game_id.present? -%>
+<% unless @game.base_game_id.present?  -%>
   <h3 class="page-section">Les extensions</h3>
+  <% if @game.extensions.any? -%>
   <ul class="thumbnails">
      <% @game.extensions.each do |ext|  -%>
         <li class="span2 game thumbnail">
@@ -51,4 +54,7 @@
         </li>
      <% end -%>
   </ul>
+  <% else -%>
+    <p class="empty"><%= @game.name %> ne possede pas d'extensions pour le moment</p>
+  <% end -%>
 <% end -%>

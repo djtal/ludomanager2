@@ -18,7 +18,7 @@
         <td><%= plateform_icon(edition.plateform.to_sym, :class => "icon-large") %></td>
         <td><%= edition.name %> <%= active_edition_tag(edition) %></td>
         <td><%= edition.country.name %></td>
-        <td><%= edition.editor.name %></td>
+        <td><%= link_to edition.editor.name, editor_games_path(edition.editor) %></td>
         <td><%= edition.kind.text %></td>
         <td><%= l edition.out_date, format: :simple %></td>
         <td>
