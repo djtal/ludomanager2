@@ -34,8 +34,7 @@
       <i class="icon-bookmark"></i> Ajouter a mes jeux...
     <% end -%>
     </div>
-    <%= dropdown_button_for("Modifier", :class => "btn-large btn-info", :icon => "icon-edit") do %>
-      <li><%= link_to "Editer la fiche", kind_edit_game_path(@game, :general) %></li>
+    <%= dropdown_button_for("Modifier", kind_edit_game_path(@game, :general), :class => "btn-large btn-info", :icon => "icon-edit", split: true) do %>
       <li><%= link_to "Ajouter une edition", kind_edit_game_path(@game, :new_edition) %></li>
       <li><%= link_to "Gerer les editions", kind_edit_game_path(@game, :editions) %></li>
       <li><%= link_to "Gerer les extensions", kind_edit_game_path(@game, :extensions) %></li>
