@@ -1,0 +1,17 @@
+<div class="page-header">
+  <h2>Les créateurs : Auteurs & Illustrateurs</h2>
+</div>
+
+<ul class="thumbnails">
+   <% @people.each do |p| -%>
+      <li class="thumbnail span3 game">
+         <h3><%= link_to p.fullname, person_games_path(p)  %></h3>
+         <%= image_tag "fallback/people.png" %>
+      </li>
+   <% end -%>
+</ul>
+
+
+<% content_for :navbar do %>
+  <%= link_to "Nouveau", new_person_path, :class => "btn btn-primary" %></li>
+<% end  %>

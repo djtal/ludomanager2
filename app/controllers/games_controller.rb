@@ -3,9 +3,13 @@ class GamesController < ApplicationController
   # GET /games.json
   def index
     @editor = Editor.find_by_id(params[:editor_id]) if params[:editor_id]
+    @person = Person.find_by_id(params[:person_id]) if params[:person_id]
     if @editor
       scoped = @editor.games
       @title = "#{@editor.name} : Les jeux"
+    elsif @person
+      scoped = @person.games
+      @title = "#{@person.fullname} : Les jeux"
     else
       scoped = Game
       @title = "Les Jeux"

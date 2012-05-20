@@ -31,6 +31,11 @@
     </div>
   </div>
 <% end -%>
+<% if @person -%>
+  <div class="row header">
+    <span class="title"><%= @person.fullname %></span>
+  </div>
+<% end -%>
 
 <% if @games.any? -%>
 <ul class="thumbnails">
