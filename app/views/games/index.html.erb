@@ -16,16 +16,10 @@
       <% if @editor.url.present? -%>
         <%= link_to "Site web de l'editeur", @editor.url, :class => "icon-home"  %>
       <% end -%>
-      <%= link_to edit_editor_path(@editor), :class => "btn" do %>
-        <i class="icon-edit"></i>&nbsp;Modifier
-      <% end -%>
-      <%= link_to new_editor_game_path(@editor), :class => "btn" do %>
-        <i class="icon-file"></i> Nouveau jeu
-      <% end -%>
+      <%= link_to_button "Modifier", edit_editor_path(@editor), icon: "edit" %>
+      <%= link_to_button "Nouveau jeu", new_editor_game_path(@editor), icon: "file" %>
       <% unless @editor.editions.count > 0  -%>
-        <%= link_to editor_path(@editor), :method => :delete, :class => "btn" do %>
-          <i class="icon-"></i>Supprimer
-        <% end -%>
+        <%= link_to_button "Supprimer", editor_path(@editor), :method => :delete, icon: "trash" %>
       <% end -%>
       </div>
     </div>
@@ -33,7 +27,10 @@
 <% end -%>
 <% if @person -%>
   <div class="row header">
-    <span class="title"><%= @person.fullname %></span>
+    <div class="span12">
+      <span class="title"><%= @person.fullname %></span>
+    </div>
+    <%= link_to_button "Modifier", edit_person_path(@person), icon: "edit" %>
   </div>
 <% end -%>
 

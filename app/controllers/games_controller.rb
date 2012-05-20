@@ -7,9 +7,11 @@ class GamesController < ApplicationController
     if @editor
       scoped = @editor.games
       @title = "#{@editor.name} : Les jeux"
+      ariane.add @editor.name, editors_path
     elsif @person
       scoped = @person.games
-      @title = "#{@person.fullname} : Les jeux"
+      @title = "#{@person.fullname} : Les Jeux"
+      ariane.add @person.fullname, people_path
     else
       scoped = Game
       @title = "Les Jeux"
@@ -23,7 +25,6 @@ class GamesController < ApplicationController
       ariane.add(Game.time.find_value(params[:time]).text, time_games_path(params[:time]))
     end
     @games = scoped.paginate(:per_page => 20, :page => params[:page])
-    ariane.add @editor.name, editor_path(@editor) if @editor
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @games }
