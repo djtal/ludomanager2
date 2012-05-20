@@ -1,0 +1,9 @@
+<%= simple_form_for([@game, @edition]) do |f| %>
+  <%= f.error_notification %>
+  <%= render 'form', form: f %>
+
+  <div class="form-actions">
+    <%= f.button :submit, value: "Creer", class: "btn btn-primary" %>
+    <%= link_to "Annuler", kind_edit_game_path(@game, :editions), class: "btn" %>
+  </div>
+<% end -%>
