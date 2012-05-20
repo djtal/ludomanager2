@@ -1,6 +1,6 @@
 <div class="btn-group">
   <%= link_to "#", opts[:link] do %>
-    <%= "<i class='#{opts[:icon]}'></i>".html_safe if opts[:icon] %><%= title %>
+    <%= icon_tag(opts[:icon]) if opts[:icon] %><%= title %>
     <span class="caret"></span>
   <% end -%>
   <ul class="dropdown-menu">

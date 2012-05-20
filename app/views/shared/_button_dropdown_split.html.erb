@@ -1,0 +1,12 @@
+<div class="btn-group">
+  <%= link_to url, class: opts[:class] do %>
+    <%= icon_tag(opts[:icon]) if opts[:icon] %>
+    <%= title %>
+  <% end -%>
+  <%= button_tag  opts[:link] do %>
+    <span class="caret"></span>
+  <% end -%>
+  <ul class="dropdown-menu">
+    <%= body %>
+  </ul>
+</div>

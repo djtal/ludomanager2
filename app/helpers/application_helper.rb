@@ -1,6 +1,7 @@
 module ApplicationHelper
   def menu_item(text, url, menu,  opts = {}, &block)
     cls = %W(#{opts.delete(:class)}) if opts[:class].present?
+    split = opts.delete(:split)
     dropdown = opts.delete(:dropdown)
     classes = cls || []
     classes << "active" if menu.to_sym ==  params[:controller].to_sym
@@ -19,21 +20,26 @@ module ApplicationHelper
   end
 
 
-  def dropdown_button_for(text, opts = {}, &block)
+  def dropdown_button_for(text, *args, &block)
+    opts = args.extract_options!
+    url = args[0] || ""
     cls = %W(#{opts.delete(:class)}) if opts[:class].present?
     return link_to(text, "#", :class => "btn #{cls * ' '}") unless block_given?
     cls ||= []
+    split = opts.delete(:split)
     options = {
       "link" => {
         "data-toggle" => "dropdown"
-      }
+      },
+      "class" => (cls + ["btn"]) * ' '
     }.merge(opts).with_indifferent_access
     options["link"]["class"] = (%w(dropdown-toggle btn) + cls).join(' ')
-    render :partial => "shared/button_dropdown", :locals => {:body => capture(&block), :title => text, :opts  => options}
+    partial = split ? "shared/button_dropdown_split" : "shared/button_dropdown"
+    render partial: partial , locals:  {body: capture(&block), title: text, url: url, opts: options}
   end
 
   def icon_tag(icon, opts = {})
-    icon = icon.gsub(/^icon/, '')
+    icon = icon.gsub(/^icon-/, '')
     set = opts.delete("icon-set") || ""
     classes = opts.delete(:class) || ""
     classes = classes.split(" ")
