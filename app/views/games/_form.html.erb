@@ -1,10 +1,11 @@
 <%= simple_form_for(@game, :html => {:class => "form-horizontal"}) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
   <fieldset class="well">
     <legend>Le jeu</legend>
-    <%= f.input :name %>
+    <div class="form-inputs">
+      <%= f.input :name %>
+      <%= f.association :base_game, collection: @base_games %>
       <div class="row">
         <div class="span4">
           <%= f.input :min %>
@@ -16,13 +17,17 @@
       <%= f.input :time, :collection => Game.time.options, :class => "span3" %>
       <%= f.input :target, :collection => Game.target.options, :class => "span3" %>
       <%= f.input :level, :collection => Game.level.options, :class => "span1" %>
+    </div>
   </fieldset>
-  </div>
 
   <fieldset class="well">
-    <legend>Jeu de base</legend>
+    <legend>Auteurs/Illustrateurs</legend>
     <div class="form-inputs">
-      <%= f.association :base_game, collection: @base_games %>
+        <% @works.each do |work| -%>
+          <%= f.fields_for :works, work do |fw| %>
+            <%= render "works/form", form: fw %>
+          <% end -%>
+        <% end -%>
     </div>
   </fieldset>
 

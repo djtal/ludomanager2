@@ -51,6 +51,9 @@ class GamesController < ApplicationController
     @title = "Creer un nouveau jeu "
     @edition = @game.editions.build(editor: @editor)
     @edition.build_box_front
+    @works = []
+    @works << @game.works.build(:kind => :author)
+    @works << @game.works.build(:kind => :illustrator)
     @base_games = Game.where(base_game_id: nil)
     ariane.add "Nouveau jeu", new_game_path
     respond_to do |format|
@@ -65,6 +68,7 @@ class GamesController < ApplicationController
     @edition = Edition.new(:game => @game)
     @edition.name = @game.name if @game
     @edition.build_box_front
+    @works = @game.works
     @editions = @game.editions.order(out_date: :desc)
     if params[:kind] == "new_extension"
       @base = Game.possible_extensions.where(["id != ?", @game.id])
