@@ -2,7 +2,7 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
-    @people = Person.order(:name => :asc).all
+    @people = Person.order(:first_name => :asc).all
 
     ariane.add "Les Createurs", people_path
     respond_to do |format|
@@ -42,7 +42,7 @@ class PeopleController < ApplicationController
   # POST /people
   # POST /people.json
   def create
-    @person = Person.new(params[:person])
+    @person = Person.new(person_params)
 
     respond_to do |format|
       if @person.save
@@ -61,7 +61,7 @@ class PeopleController < ApplicationController
     @person = Person.find(params[:id])
 
     respond_to do |format|
-      if @person.update_attributes(params[:person])
+      if @person.update_attributes(person_params)
         format.html { redirect_to person_games_path(@person), noticT: 'Person was successfully updated.' }
         format.json { head :no_content }
       else
@@ -85,6 +85,10 @@ class PeopleController < ApplicationController
 
 
   private
+
+  def person_params
+    params.require(:person).permit(:fullname, :country_id)
+  end
 
   def set_ariane
     super

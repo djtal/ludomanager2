@@ -16,8 +16,8 @@ class Game < ActiveRecord::Base
 
   has_many :works
   accepts_nested_attributes_for :works
-  has_many :creator_authors, :class_name => "Work", :conditions => {:kind => :author}
-  has_many :creator_artists, :class_name => "Work", :conditions => {:kind => :artist}
+  has_many :creator_authors, -> { where(kind: :author) }, class_name:  "Work"
+  has_many :creator_artists, -> { where(kind: :artist) }, class_name: "Work"
   has_many :authors, :through => :creator_authors, :source => :person
   accepts_nested_attributes_for :authors
   has_many :artists, :through => :creator_artists, :source => :person
@@ -28,6 +28,6 @@ class Game < ActiveRecord::Base
 
   scope :by_target, lambda { |target| where(:target => target)}
   scope :by_time, lambda { |time| where(:time => time)}
-  scope :possible_extensions, where(:base_game_id => nil)
+  scope :possible_extensions, -> { where(:base_game_id => nil) }
 
 end

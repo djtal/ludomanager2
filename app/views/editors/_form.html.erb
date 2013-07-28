@@ -3,7 +3,7 @@
   <div class="form-inputs">
     <%= form.input :name %>
     <%= form.input :url %>
-    <%= form.association :country %>
+    <%= form.association :country, collection: Country.all.to_a %>
   </div>
 </fieldset>
 

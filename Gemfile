@@ -1,13 +1,12 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 3.2.0'
+gem 'rails', '~> 4.0.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 
-gem 'sqlite3'
-#gem 'strong_parameters', :git => 'https://github.com/rails/strong_parameters.git'
+gem 'pg'
 gem 'enumerize'
 gem 'carrierwave'
 gem 'mini_magick'
@@ -18,37 +17,31 @@ gem 'map_by_method'
 gem 'interactive_editor'
 gem 'ariane'
 
-group 'test' do
-  gem 'm', '~> 1.1'
-end
 
 group :production do
-  gem 'mysql'
+  gem 'mysql2'
 end
 
 
 group :development do
   gem 'quiet_assets'
-  gem 'rails-footnotes', '>= 3.7.5.rc4'
 end
 
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+gem 'sass-rails'
+gem 'coffee-rails'
 
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer'
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+# gem 'therubyracer'
 
-  gem 'uglifier', '>= 1.0.3'
-end
+gem 'uglifier'
 
 gem 'jquery-rails'
 gem 'bourbon'
 
-gem 'simple_form', '~> 2.0.0'
-gem 'devise', '~> 2.0.0'
+gem 'simple_form'
+gem 'devise'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

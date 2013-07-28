@@ -12,8 +12,9 @@
  *= require_self
 */
 
-@import "bourbon";
 @import "bootstrap.min";
+@import "font-awesome.min";
+@import "bourbon";
 @import "colors";
 @import "games";
 @import "flags16";
@@ -37,3 +38,12 @@ body{
 
 h2{ color: $brown;}
 
+.breadcrumb {
+  background-color: #fff;
+  > li + li:before { content: ""; }
+
+  .divider { margin-left: 3px; }
+}
+.actions-bar {
+  padding: 8px 15px;
+}

@@ -1,5 +1,4 @@
 class Person < ActiveRecord::Base
-  attr_accessible :fullname, :country_id
 
   validates_presence_of :first_name, :last_name
   has_one :country

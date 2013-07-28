@@ -34,7 +34,7 @@ class EditorsController < ApplicationController
   # POST /editors
   # POST /editors.json
   def create
-    @editor = Editor.new(params[:editor])
+    @editor = Editor.new(editor_params)
 
     respond_to do |format|
       if @editor.save
@@ -54,7 +54,7 @@ class EditorsController < ApplicationController
     @editor = Editor.find(params[:id])
 
     respond_to do |format|
-      if @editor.update_attributes(params[:editor])
+      if @editor.update_attributes(editor_params)
         format.html { redirect_to editor_games_path(@editor), notice: 'Editor was successfully updated.' }
         format.json { head :no_content }
       else
@@ -77,6 +77,10 @@ class EditorsController < ApplicationController
   end
 
   private
+
+  def editor_params
+    params.require(:editor).permit(:name, :country_id, :url, logo_attributes: [:image, :remote_image_url] )
+  end
 
   def set_ariane
     super

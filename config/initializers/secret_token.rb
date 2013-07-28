@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Ludomanager2::Application.config.secret_token = '69c430151cc0dde1f08f936d5923b7d751ddcfaefd9982ea443a4ae1e33207f4dba9e2f5d63eaadafa76f6ec79cd8beb65fa263991a0f533bba48ab3a89fa55e'
+Ludomanager2::Application.config.secret_token = '2ad49c366a2ae5f58bf4481e421702ffab33d82df4e3be7497d6812ba63a394a86009ac4bf5ed1bcd864139f080159660f16452b1d1eb28bc3cbc6eaea458aa7'

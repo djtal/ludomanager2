@@ -3,61 +3,51 @@
 <head>
   <title><%= @title.present? ?  @title : "Ludomaganager" %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= stylesheet_link_tag    "font-awesome", :media => "all" %>
   <%= stylesheet_link_tag    "iconmoo", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-          <div class="container-fluid">
-            <%= link_to "Ludomanager", root_path, :class => "brand" %>
-            <div class="nav-collapse">
-              <ul class="nav">
-                <%= menu_item("Les Jeux", games_path, :games) %>
-                <li class="divider-vertical"></li>
-                <% Game.target.options.each do |name, target| -%>
-                  <%= menu_item(name, target_games_path(:target => target), "games_#{target}", :dropdown => true, split: true) do %>
-                    <ul class="dropdown-menu">
-                     <li><%= link_to "Tous", target_games_path(:target => target) %></li>
-                     <li class="divider"></li>
-                     <% Game.time.options.each do |name, time| %>
-                        <li><%= link_to name, target_time_games_path(:target => target, :time => time) %></li>
-                     <% end -%>
-                    </ul>
-                  <% end -%>
-                  <li class="divider-vertical"></li>
-                <% end -%>
-                <%= menu_item("Les Auteurs",people_path, :games) %>
-                <li class="divider-vertical"></li>
-                <%= menu_item("Les Editeurs", editors_path, :editors)%>
-              </ul>
-              <p class="navbar-text pull-right">
-
-              </p>
-            </div><!--/.nav-collapse -->
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-            <%= ariane.render %>
-            <ul class="unstyled">
-              <%= yield :navbar %>
+    <div class="container">
+      <%= link_to "Ludomanager", root_path, :class => "navbar-brand" %>
+      <ul class="nav navbar-nav">
+        <%= menu_item("Les Jeux", games_path, :games) %>
+        <li class="divider-vertical"></li>
+        <% Game.target.options.each do |name, target| -%>
+          <%= menu_item(name, target_games_path(:target => target), "games_#{target}", :dropdown => true, split: true) do %>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Tous", target_games_path(:target => target) %></li>
+              <li class="divider"></li>
+              <% Game.time.options.each do |name, time| %>
+                <li><%= link_to name, target_time_games_path(:target => target, :time => time) %></li>
+              <% end -%>
             </ul>
-            <%= yield %>
-          </div>
-        </div><!--/row-->
-
-        <hr>
-
-        <footer>
-          <p>&copy; Company 2012</p>
-        </footer>
-
-      </div><!--/.fluid-container-->
+          <% end -%>
+          <li class="divider-vertical"></li>
+        <% end -%>
+        <%= menu_item("Les Auteurs",people_path, :games) %>
+        <li class="divider-vertical"></li>
+        <%= menu_item("Les Editeurs", editors_path, :editors)%>
+      </ul>
+    </div>
   </div>
+
+  <div class="container">
+    <div class="row">
+      <%= ariane.render %>
+      <div class="actions-bar">
+        <%= yield :navbar %>
+      </div>
+      <%= yield %>
+    </div>
+  </div>
+
+  <hr>
+
+  <footer>
+    <p>&copy; Company 2012</p>
+  </footer>
+
 </body>
 </html>
