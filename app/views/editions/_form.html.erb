@@ -3,9 +3,9 @@
   <div class="form-inputs">
     <%= form.input :name, :placeholder => name_placeholder_for(form.object) %>
     <%= form.input :game_id, :as => :hidden %>
-    <%= form.association :editor, :disabled => @editor.present? %>
+    <%= form.association :editor, :disabled => @editor.present?, collection: Editor.all %>
     <%= form.input :out_date, :as => :date,  :discard_day => true  %>
-    <%= form.association :country %>
+    <%= form.association :country, collection: Country.all %>
     <div class="row">
       <div class="span4">
         <%= form.input :kind, :collection => Edition.kind.options %>

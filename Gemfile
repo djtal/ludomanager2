@@ -39,8 +39,9 @@ gem 'uglifier'
 
 gem 'jquery-rails'
 gem 'bourbon'
+gem "font-awesome-rails"
 
-gem 'simple_form'
+gem 'simple_form', github: 'plataformatec/simple_form'
 gem 'devise'
 
 # To use ActiveModel has_secure_password

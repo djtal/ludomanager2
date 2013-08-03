@@ -1,5 +1,5 @@
 class Game < ActiveRecord::Base
-  include Enumerize
+  extend Enumerize
 
 
   validates :name, :presence => true

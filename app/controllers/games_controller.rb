@@ -65,11 +65,7 @@ class GamesController < ApplicationController
   # GET /games/1/edit
   def edit
     @game = Game.joins(:editions).find(params[:id])
-    @edition = Edition.new(:game => @game)
-    @edition.name = @game.name if @game
-    @edition.build_box_front
-    @works = @game.works
-    @editions = @game.editions.order(out_date: :desc)
+    prepare_game
     if params[:kind] == "new_extension"
       @base = Game.possible_extensions.where(["id != ?", @game.id])
       @extensions = 3.times.inject([]){ |acc, _| acc << @game.extensions.build}
@@ -81,7 +77,7 @@ class GamesController < ApplicationController
   # POST /games
   # POST /games.json
   def create
-    @game = Game.new(params[:game])
+    @game = Game.new(game_params)
 
     respond_to do |format|
       if @game.save
@@ -90,7 +86,9 @@ class GamesController < ApplicationController
         format.html { redirect_to @game, notice: 'Game was successfully created.' }
         format.json { render json: @game, status: :created, location: @game }
       else
-        format.html { render action: "new" }
+        format.html {
+          prepare_game
+          render action: "new" }
         format.json { render json: @game.errors, status: :unprocessable_entity }
       end
     end
@@ -121,7 +119,7 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
 
     respond_to do |format|
-      if @game.update_attributes(params[:game])
+      if @game.update_attributes(game_param)
         format.html { redirect_to @game, notice: 'Game was successfully updated.' }
         format.json { head :no_content }
       else
@@ -144,6 +142,21 @@ class GamesController < ApplicationController
   end
 
   private
+
+  def prepare_game
+    @edition = Edition.new(:game => @game)
+    @edition.name = @game.name if @game
+    @edition.build_box_front
+    @works = @game.works
+    @editions = @game.editions.order(out_date: :desc)
+  end
+
+  def game_params
+    params.require(:game).permit(:name, :min, :max, :base_game_id, :time, :target, :level,
+                                 :works_attributes => [:person_id, :kind],
+                                 :editions_attributes => [:name, :game_id, :editor_id, :out_date, :lang, :kind, :plateform,
+                                 :box_front_attributes => [:remote_image_url]])
+  end
 
   def set_ariane
     super

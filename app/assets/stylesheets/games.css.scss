@@ -6,11 +6,11 @@
 @import "bourbon";
 
 .game{
-  background-color: $smoke;
-  padding:0;
+  .thumbnail {
+    min-height: 202px;
+    h3 { min-height: 60px; }
+  }
   h3, h4{text-align: center;}
-  h3 { min-height: 54px;}
-  h3 a{ @include box(vertical, center, center); min-height: 54px;}
 }
 
 h3.page-section { margin-bottom: 10px; border-bottom: solid 1px #EEE}
@@ -22,7 +22,7 @@ h3.page-section { margin-bottom: 10px; border-bottom: solid 1px #EEE}
 }
 
 .header{
-  .title{ font-size:2em; margin:15px -20px; display:block;}
+  .title{ font-size:2em; display:block;}
   margin-bottom: 15px;
   background-color: $smoke;
   margin-left: 0;

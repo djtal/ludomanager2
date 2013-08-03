@@ -4,7 +4,7 @@ class EditionsController < ApplicationController
   # POST /editions.json
   def create
     @game = Game.find_by_id(params[:game_id]) if params[:game_id].present?
-    @edition = @game ? @game.editions.build(params[:edition]) :  Edition.new(params[:edition])
+    @edition = @game ? @game.editions.build(edition_params) :  Edition.new(edition_params)
 
     respond_to do |format|
       if @edition.save
@@ -31,7 +31,7 @@ class EditionsController < ApplicationController
     @edition = @game.editions.find(params[:id])
 
     respond_to do |format|
-      if @edition.update_attributes(params[:edition])
+      if @edition.update_attributes(edition_params)
         format.html { redirect_to kind_edit_game_path(@game, :editions), notice: 'Edition was successfully updated.' }
         format.json { head :no_content }
       else
@@ -52,6 +52,13 @@ class EditionsController < ApplicationController
       format.html { redirect_to kind_edit_game_path(@game, :editions) }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def edition_params
+    params.require(:edition).permit(:game_id, :id, :editor_id, :out_date, :lang, :kind, :plateform, :name,
+                                  :box_front_attributes => [:id, :image, :remote_image_url, :_destroy])
   end
 
 end

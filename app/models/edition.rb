@@ -1,5 +1,5 @@
 class Edition < ActiveRecord::Base
-  include Enumerize
+  extend Enumerize
   validates_presence_of :editor_id, :lang
 
   before_save :ensure_name, :if => lambda{ self.name.blank? }
@@ -15,7 +15,7 @@ class Edition < ActiveRecord::Base
 
   accepts_nested_attributes_for :box_front
 
-  scope :primary, where(:kind => :primary)
+  scope :primary, -> { where(:kind => :primary) }
 
   def active?
     game.active_edition == self

@@ -1,4 +1,6 @@
 # encoding: utf-8
+#
+require 'carrierwave/processing/mini_magick'
 
 class ImageUploader < CarrierWave::Uploader::Base
 
@@ -12,8 +14,11 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
+    Rails.logger.debug "#" * 70
+    Rails.logger.debug model.inspect
+    Rails.logger.debug "#" * 70
   # TODO change this so use imageable model id
-    "uploads/#{model.class.to_s.underscore}/#{model.imageable.class.to_s.underscore}/#{model.id}"
+    "uploads/#{model.class.to_s.underscore}/#{model.imageable.class.to_s.underscore}/#{model.imageable.id}"
   end
 
 
@@ -54,6 +59,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   def filename
+    Rails.logger.debug "#" * 70
+    Rails.logger.debug model.inspect
+    Rails.logger.debug "#" * 70
   "#{model.imageable.name.downcase}.#{file.extension}" if original_filename.present?
   end
 

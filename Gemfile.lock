@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/plataformatec/simple_form.git
+  revision: 73005f4fc8b0b4934b2fbe9dd54ea35a1692c84a
+  specs:
+    simple_form (3.0.0.rc)
+      actionpack (>= 4.0.0, < 4.1)
+      activemodel (>= 4.0.0, < 4.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -29,7 +37,7 @@ GEM
     ariane (0.0.3)
       actionpack (>= 2.3.0)
       activesupport (>= 2.3.0)
-    atomic (1.1.10)
+    atomic (1.1.12)
     bcrypt-ruby (3.1.1)
     bourbon (3.1.8)
       sass (>= 3.2.0)
@@ -57,6 +65,8 @@ GEM
     execjs (1.4.0)
       multi_json (~> 1.0)
     ffi (1.9.0)
+    font-awesome-rails (3.2.1.2)
+      railties (>= 3.2, < 5.0)
     hike (1.2.3)
     hirb (0.7.1)
     i18n (0.6.4)
@@ -74,7 +84,7 @@ GEM
     mini_magick (3.6.0)
       subexec (~> 0.2.1)
     minitest (4.7.5)
-    multi_json (1.7.7)
+    multi_json (1.7.8)
     mysql2 (0.3.13)
     orm_adapter (0.4.0)
     paint (0.8.6)
@@ -104,7 +114,6 @@ GEM
       railties (>= 4.0.0.beta, < 5.0)
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
-    simple_form (1.4.1)
     spoon (0.0.4)
       ffi
     sprockets (2.10.0)
@@ -144,6 +153,7 @@ DEPENDENCIES
   coffee-rails
   devise
   enumerize
+  font-awesome-rails
   hirb
   interactive_editor
   jquery-rails
@@ -154,7 +164,7 @@ DEPENDENCIES
   quiet_assets
   rails (~> 4.0.0)
   sass-rails
-  simple_form
+  simple_form!
   uglifier
   will_paginate (~> 3.0)
   wirb

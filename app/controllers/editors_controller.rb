@@ -79,7 +79,7 @@ class EditorsController < ApplicationController
   private
 
   def editor_params
-    params.require(:editor).permit(:name, :country_id, :url, logo_attributes: [:image, :remote_image_url] )
+    params.require(:editor).permit(:name, :country_id, :url, :id,  logo_attributes: [:image, :remote_image_url, :id] )
   end
 
   def set_ariane
