@@ -2,12 +2,14 @@
   <h2>Les créateurs : Auteurs & Illustrateurs</h2>
 </div>
 
-<ul class="thumbnails">
+<div class="row">
    <% @people.each do |p| -%>
-      <li class="thumbnail span3 game">
-         <h3><%= link_to p.fullname, person_games_path(p)  %></h3>
-         <%= image_tag "fallback/people.png" %>
-      </li>
+      <div class="col-lg-2 game">
+        <div class="thumbnail">
+          <h3><%= link_to p.fullname, person_games_path(p)  %></h3>
+          <%= image_tag "fallback/people.png" %>
+        </div>
+      </div>
    <% end -%>
 </ul>
 

@@ -5,10 +5,11 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= stylesheet_link_tag    "iconmoo", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="navbar navbar-fixed-top">
+  <div class="navbar navbar-fixed-top navbar-inverse">
     <div class="container">
       <%= link_to "Ludomanager", root_path, :class => "navbar-brand" %>
       <ul class="nav navbar-nav">
@@ -36,17 +37,19 @@
   <div class="container">
     <div class="row">
       <%= ariane.render %>
-      <div class="actions-bar">
-        <%= yield :navbar %>
-      </div>
-      <%= yield %>
     </div>
+    <div class="actions">
+      <%= yield :navbar %>
+    </div>
+    <%= yield %>
   </div>
 
   <hr>
 
   <footer>
-    <p>&copy; Company 2012</p>
+    <div class="container">
+      <p>&copy; Company 2012</p>
+    </div>
   </footer>
 
 </body>

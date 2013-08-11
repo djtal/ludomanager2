@@ -15,6 +15,7 @@ gem 'wirb'
 gem 'hirb'
 gem 'map_by_method'
 gem 'interactive_editor'
+gem 'slim'
 gem 'ariane'
 
 
