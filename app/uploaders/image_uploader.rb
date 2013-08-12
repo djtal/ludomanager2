@@ -55,10 +55,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   def filename
-    Rails.logger.debug "#" * 70
-    Rails.logger.debug model.inspect
-    Rails.logger.debug "#" * 70
-  "#{model.imageable.name.downcase}.#{file.extension}" if original_filename.present?
+    "#{model.imageable.name.downcase}.#{file.extension}" if original_filename.present?
   end
 
 end
