@@ -10,6 +10,7 @@ gem 'pg'
 gem 'enumerize'
 gem 'carrierwave'
 gem 'mini_magick'
+gem "fog", "~> 1.3.1"
 gem 'will_paginate', '~> 3.0'
 gem 'wirb'
 gem 'hirb'
@@ -17,6 +18,7 @@ gem 'map_by_method'
 gem 'interactive_editor'
 gem 'slim'
 gem 'ariane'
+gem 'unicorn'
 
 
 group :production do
