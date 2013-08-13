@@ -6,7 +6,11 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: ludomanager2_dev
+  database: <%= ENV['LUDOMANAGER_DEV_DATABASE'] %>
+  host: <%= ENV['LUDOMANAGER_DEV_HOST'] %>
+  port: <%= ENV['LUDOMANAGER_DEV_PORT'] %>
+  username: <%= ENV['LUDOMANAGER_DEV_USER'] %>
+  password: <%= ENV['LUDOMANAGER_DEV_PASSWORD'] %>
   pool: 5
   timeout: 5000
 
@@ -17,12 +21,5 @@ test:
   adapter: postgresql
   encoding: unicode
   database: ludomanager2_test
-  pool: 5
-  timeout: 5000
-
-production:
-  adapter: postgresql
-  encoding: unicode
-  database: ludomanager2
   pool: 5
   timeout: 5000
