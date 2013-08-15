@@ -12,6 +12,8 @@
 //
 //= require jquery.min
 //= require bootstrap.min
+//= require jquery_ujs
+//= require select2.min
+//= require select2_locale_fr
+//= require underscore-min
 //= require_tree .
-
-

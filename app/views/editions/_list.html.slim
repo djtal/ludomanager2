@@ -1,0 +1,28 @@
+table.table.table-striped.games
+  thead
+    tr
+      th Boite
+      th
+      th Nom
+      th Langue
+      th Editeur
+      th Type
+      th Date de sortie
+      th
+  tbody
+    - editions.each do |edition|
+      tr
+        td = image_tag(edition.box_front.image.thumb.url)
+        td = plateform_icon(edition.plateform.to_sym, :class => "icon-large")
+        td
+          #{edition.name}
+          = active_edition_tag(edition)
+        td = edition.country.name
+        td = link_to edition.editor.name, editor_games_path(edition.editor)
+        td = edition.kind.text
+        td = l edition.out_date, format: :simple
+        td
+          div.button-group
+            = link_to_button "", edit_game_edition_path(edition.game, edition), icon: "edit"
+            = link_to_button "", make_active_game_edition_path(edition.game, edition), method: :put, icon: "key", disabled: edition.active?
+            = link_to_button "", game_edition_path(edition.game, edition), method: :delete, icon: "trash"

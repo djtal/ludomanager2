@@ -2,7 +2,7 @@
   <legend>Caractéristiques</legend>
     <%= form.input :name %>
     <%= form.input :url %>
-    <%= form.association :country %>
+    <%= form.association :country, :input_html => { :class => "select2 col-lg-3" }, wrapper_html: { class: "row" } %>
 </fieldset>
 
 <fieldset class="well">

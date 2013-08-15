@@ -54,6 +54,19 @@ class EditionsController < ApplicationController
     end
   end
 
+  def make
+    @game = Game.find(params[:game_id])
+    @edition = @game.editions.find(params[:id])
+    respond_to do |format|
+      if @game.update_attribute :active_edition_id, @edition.id
+        format.html { redirect_to @game, info: "L'edition #{@edition.name} est la principale"}
+      else
+        format.html { render "games/edit" }
+      end
+    end
+
+  end
+
   private
 
   def edition_params

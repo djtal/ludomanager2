@@ -37,7 +37,7 @@
 <% if @games.any? -%>
   <div class="row">
     <% @games.each do |game| %>
-        <%= render game %>
+        <%= render game, edition: game.active_edition %>
     <% end %>
   </div>
 <% else -%>

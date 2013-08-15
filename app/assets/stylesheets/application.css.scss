@@ -10,9 +10,11 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require bootstrap.min
+ *= require select2
+ *= require select2-bootstrap
 */
 
-@import "bootstrap.min";
 @import "font-awesome";
 @import "bourbon";
 @import "colors";
