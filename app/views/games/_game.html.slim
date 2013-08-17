@@ -1,11 +1,13 @@
 div.col-lg-2.game
   div.thumbnail
-    h3 = link_to(game.name, game)
+    .caption
+      h3 = link_to(game.name, game)
     = image_tag edition.box_front.image.normal.url
-    ul.horizontal.taxonomies
-      li = link_to "#", :rel => "tooltip", :title => game.time_text, "data-toggle" => "tooltip", "data-placement" => "bottom", "data-animation" => true do
-          i.icon-time
-      li = link_to "#", :rel => "tooltip", :title => "#{game.min} a #{game.max} joueurs", "data-toggle" => "tooltip", "data-placement" => "bottom", "data-animation" => true do
-          i.icon-user
-      li = link_to "#", :rel => "tooltip", :title => game.level_text, "data-toggle" => "tooltip", "data-placement" => "bottom", "data-animation" => true do
-          i.icon-signal
+    .caption
+      ul.list-inline
+        li = link_to "#", :rel => "tooltip", :title => game.time_text, "data-toggle" => "tooltip", "data-placement" => "bottom", "data-animation" => true do
+            i.icon-time
+        li = link_to "#", :rel => "tooltip", :title => "#{game.min} a #{game.max} joueurs", "data-toggle" => "tooltip", "data-placement" => "bottom", "data-animation" => true do
+            i.icon-user
+        li = link_to "#", :rel => "tooltip", :title => game.level_text, "data-toggle" => "tooltip", "data-placement" => "bottom", "data-animation" => true do
+            i.icon-signal
