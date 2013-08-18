@@ -4,6 +4,7 @@ class EditorsController < ApplicationController
   def index
     @editors = Editor.order("LOWER(name) asc").all
     @title = "Tous les editeurs"
+    @page_title = @title
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @editors }
@@ -82,7 +83,7 @@ class EditorsController < ApplicationController
     params.require(:editor).permit(:name, :country_id, :url, :id,  logo_attributes: [:image, :remote_image_url, :id] )
   end
 
-  def set_ariane
+  def set_default
     super
     ariane.add "Les Editeurs", editors_path
   end

@@ -25,6 +25,7 @@ class GamesController < ApplicationController
       ariane.add(Game.time.find_value(params[:time]).text, time_games_path(params[:time]))
     end
     @games = scoped.paginate(:per_page => 20, :page => params[:page])
+    @page_title = @title
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @games }

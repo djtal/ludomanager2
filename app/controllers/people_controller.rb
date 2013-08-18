@@ -5,6 +5,7 @@ class PeopleController < ApplicationController
     @people = Person.order(:first_name => :asc).all
 
     ariane.add "Les Createurs", people_path
+    @page_title = "Les créateurs : Auteurs & Illustrateurs"
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @people }
@@ -26,7 +27,9 @@ class PeopleController < ApplicationController
   # GET /people/new.json
   def new
     @person = Person.new
-    ariane.add "Nouvel Auteur-Illustrateur", new_person_path
+    @title = "Nouvel Auteur-Illustrateur"
+    @page_title = @title
+    ariane.add @title, new_person_path
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,6 +40,8 @@ class PeopleController < ApplicationController
   # GET /people/1/edit
   def edit
     ariane.add "Modification d'un createur", new_person_path
+    @title = "Mdofier d'un Auteur-Illustrateyr"
+    @page_title = @title
     @person = Person.find(params[:id])
   end
 

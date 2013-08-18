@@ -1,0 +1,12 @@
+.row
+  - @people.each do |person|
+    .col-lg-2.game
+      .thumbnail
+        = image_tag "fallback/people.png"
+        .caption
+          h3 = link_to person.fullname, person
+
+- content_for :navbar
+  = link_to [:new, :person], class: "btn btn-info btn-sm" do
+    = icon_tag 'user'
+    |  Nouvelle personne

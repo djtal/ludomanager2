@@ -1,0 +1,12 @@
+= simple_form_for(@person, :defaults => { :wrapper_html => {:class => 'form-group'}, :input_html => { :class => 'form-control' } }) do |f|
+  = f.error_notification
+
+  fieldset.well
+    legend Caractéristiques
+    .form-inputs
+       = f.input :fullname, label: "Nom complet"
+       = f.input :country_id, collection: Country.all
+
+  .form-actions
+    = f.button :submit, class: "btn btn-primary"
+    = link_to "Annuler", editors_path, :class => "btn"

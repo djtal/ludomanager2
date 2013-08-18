@@ -38,6 +38,11 @@
     <div class="row">
       <%= ariane.render %>
     </div>
+    <% if @page_title.present? %>
+      <div class="page-header">
+        <h2><%= @page_title %></h2>
+      </div>
+    <% end %>
     <div class="actions">
       <%= yield :navbar %>
     </div>

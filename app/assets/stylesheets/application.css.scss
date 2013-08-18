@@ -9,10 +9,10 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
  *= require bootstrap.min
  *= require select2
  *= require select2-bootstrap
+ *= require_self
 */
 
 @import "font-awesome";
@@ -37,6 +37,8 @@ body{
 .empty{
   text-align:center;
 }
+
+.actions { margin: 20px 0;}
 
 h2{ color: $brown;}
 

@@ -2,12 +2,11 @@
   - @editors.each do |editor|
     .col-lg-2.game
       .thumbnail
+        = image_tag(editor.logo.image.normal.url, :alt => editor.name)
         .caption
           h3 = link_to(editor.name, editor_games_path(editor))
-        = image_tag(editor.logo.image.normal.url, :alt => editor.name)
-
-- content_for :breadcrump do
-  = link_to(@title, editors_path)
 
 - content_for :navbar do
-  = link_to("Nouveau", new_editor_path, :class => "btn btn-primary")
+  = link_to new_editor_path, :class => "btn btn-info btn-sm" do
+    = icon_tag "building"
+    |  Nouvel Editeur
