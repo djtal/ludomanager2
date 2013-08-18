@@ -1,0 +1,5 @@
+= simple_form_for @editor, html: { class: "form-horizontal" } do |f|
+  = render f
+
+  = f.button :submit, :value => "Mettre a jour", :class => "btn btn-primary"
+  = link_to "Annuler", editors_path, :class => "btn"

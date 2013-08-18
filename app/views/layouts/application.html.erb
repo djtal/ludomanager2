@@ -9,7 +9,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar navbar-fixed-top navbar-inverse" id="menu">
     <div class="container">
       <%= link_to "Ludomanager", root_path, :class => "navbar-brand" %>
       <ul class="nav navbar-nav">
@@ -34,7 +34,7 @@
     </div>
   </div>
 
-  <div class="container">
+  <div class="container" id="main">
     <div class="row">
       <%= ariane.render %>
     </div>
@@ -47,15 +47,9 @@
       <%= yield :navbar %>
     </div>
     <%= yield %>
+    <footer>
+      <p>&copy; Dj T@l 2013</p>
+    </footer>
   </div>
-
-  <hr>
-
-  <footer>
-    <div class="container">
-      <p>&copy; Company 2012</p>
-    </div>
-  </footer>
-
 </body>
 </html>
