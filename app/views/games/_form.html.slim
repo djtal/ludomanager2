@@ -1,0 +1,42 @@
+= simple_form_for @game, html: { class: "form-horizontal" } do |f|
+  = f.error_notification
+
+  fieldset.well
+    legend Le jeu
+    = f.input :name, label_html: { class: "col-lg-2" } do
+        .col-lg-4
+          = f.input_field :name
+
+    = f.input :base_game, label_html: { class: "col-lg-2"}  do
+      .col-lg-4
+        = f.input_field :base_game, collection: @base_games
+
+    = f.input :min, label_html: { class: "col-lg-2" } do
+      .col-lg-1
+        = f.input_field :min
+    = f.input :max, label_html: { class: "col-lg-2" } do
+      .col-lg-1
+        = f.input_field :max
+
+    = f.input :time, label_html: { class: "col-lg-2" } do
+      .col-lg-4
+        = f.input_field :time, :collection => Game.time.options
+    = f.input :target, label_html: { class: "col-lg-2" } do
+      .col-lg-4
+        = f.input_field :target, :collection => Game.target.options
+    = f.input :level, label_html: { class: "col-lg-2" } do
+      .col-lg-4
+        = f.input_field :level, :collection => Game.level.options
+
+  fieldset.well
+    legend Auteurs/Illustrateurs
+    - @works.each do |work|
+          = f.fields_for :works, work do |fw|
+            = render "works/form", form: fw
+
+  - if @edition
+    = f.fields_for :editions, @edition do |fe|
+      = render "editions/form", :form => fe, :edition => @edition
+
+  = f.button :submit, :value => "Creer", :class => "btn-primary"
+  = link_to "Annuler", games_path, :class => "btn"

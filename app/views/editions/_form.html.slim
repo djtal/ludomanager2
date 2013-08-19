@@ -1,0 +1,25 @@
+fieldset.well
+  legend Edition du jeu
+  = form.input :name, label_html: { class: "col-lg-2" }  do
+    .col-lg-4
+      = form.input_field :name, :placeholder => name_placeholder_for(form.object)
+  = form.input :game_id, :as => :hidden
+  = form.input :editor_id, label_html: { class: "col-lg-2" } do
+    div.col-lg-4
+      = form.input_field :editor_id, collection: Editor.all
+  = form.input :out_date, label_html: { class: "col-lg-2" } do
+    .col-lg-4
+      = form.input_field :out_date, discard_day: true, as: :date
+  = form.input :lang, label_html: { class: "col-lg-2" } do
+    div.col-lg-4
+      = form.input_field :lang, collection: Country.all
+  = form.input :kind, label_html: { class: "col-lg-2" } do
+    .col-lg-4
+      = form.input_field :kind, collection: Edition.kind.options
+  = form.input :plateform, label_html: { class: "col-lg-2" } do
+    .col-lg-4
+      = form.input_field :plateform, collection: Edition.plateform.options
+
+
+  = form.fields_for :box_front do |box|
+    = render "shared/image_fields", f: box

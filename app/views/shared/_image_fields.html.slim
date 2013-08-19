@@ -1,0 +1,9 @@
+.row
+  div.col-lg-6
+    = f.input :image, label_html: { class: "col-lg-2" } do
+      div.col-lg-8
+        = f.input_field :image, as: :file
+  div.col-lg-6
+    = f.input :remote_image_url, :label => "URL du logo", label_html: { class: "col-lg-3" }
+      div.col-lg-8
+        = f.input_field :remote_image_url, as: :string

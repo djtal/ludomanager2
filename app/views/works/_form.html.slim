@@ -1,0 +1,5 @@
+= form.input :person, label_html: { class: "col-lg-2"}  do
+  .col-lg-4
+    = form.input_field :person, label_method: :fullname, collection: Person.all
+
+= form.input :kind, as: :hidden
