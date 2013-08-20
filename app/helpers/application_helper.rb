@@ -62,6 +62,22 @@ module ApplicationHelper
     end
   end
 
+  BOOTSTRAP_ALERT_LEVEL = {
+    error:     "error",
+    alert:     "error",
+    notice:    "success",
+    warning:   "warning",
+    h_error:   "error",
+    h_alert:   "error",
+    h_notice:  "success",
+    h_warning: "warning",
+  }
+
+  def tw_alert_for(level)
+    BOOTSTRAP_ALERT_LEVEL[level] || "info"
+  end
+
+
   class Tabs
     def initialize(context)
       @context = context

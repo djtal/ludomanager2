@@ -150,13 +150,14 @@ class GamesController < ApplicationController
     @edition.name = @game.name if @game
     @edition.build_box_front
     @works = @game.works
+    @works << @game.works.build(:kind => :author)
+    @works << @game.works.build(:kind => :illustrator)
     @editions = @game.editions.order(out_date: :desc)
   end
 
   def game_params
-    params.require(:game).permit(:name, :min, :max, :base_game_id, :time, :target, :level,
-                                 :works_attributes => [:person_id, :kind],
-                                 :editions_attributes => [:name, :game_id, :editor_id, :out_date, :lang, :kind, :plateform,
+    params.require(:game).permit(:name, :min, :max, :base_game_id, :time, :target, :level, author_ids: [],
+                                 :editions_attributes => [:name, :game_id, :editor_id, :out_date, :lang, :kind, :plateform, :id,
                                  :box_front_attributes => [:remote_image_url]])
   end
 

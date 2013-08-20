@@ -1,5 +1,4 @@
 = simple_form_for @game, html: { class: "form-horizontal" } do |f|
-  = f.error_notification
 
   fieldset.well
     legend Le jeu
@@ -7,9 +6,9 @@
         .col-lg-4
           = f.input_field :name
 
-    = f.input :base_game, label_html: { class: "col-lg-2"}  do
+    = f.input :base_game_id, label_html: { class: "col-lg-2"}  do
       .col-lg-4
-        = f.input_field :base_game, collection: @base_games
+        = f.input_field :base_game_id, collection: @base_games
 
     = f.input :min, label_html: { class: "col-lg-2" } do
       .col-lg-1
@@ -30,9 +29,9 @@
 
   fieldset.well
     legend Auteurs/Illustrateurs
-    - @works.each do |work|
-          = f.fields_for :works, work do |fw|
-            = render "works/form", form: fw
+    = f.input :author_ids, label_html: { class: "col-lg-2" } do
+      .col-lg-4
+        = f.input_field :author_ids, collection: Person.all, label_method: :fullname, multiple: true, include_hidden: false
 
   - if @edition
     = f.fields_for :editions, @edition do |fe|

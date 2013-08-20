@@ -1,0 +1,13 @@
+- if flash.present?
+  flashes
+    - flash[:alert] ||= flash[:error]
+    - [:alert, :notice].each do |key|
+      - next if flash[key].blank?
+      div class = ["alert", "alert-#{tw_alert_for key}"]
+        button(class= "close"  data-dismiss = "alert" type = "button") &times;
+        =  flash[key]
+    - [:h_alert, :h_notice].each do |key|
+      - next if flash[key].blank?
+      div class = ["alert", "alert-#{tw_alert_for key}"]
+        button.close( data-dismiss = "alert" type = "button") &times;
+        =  flash[key].html_safe
