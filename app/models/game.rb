@@ -14,6 +14,8 @@ class Game < ActiveRecord::Base
   belongs_to :active_edition, :class_name => "Edition"
   accepts_nested_attributes_for :active_edition
 
+  has_many :editors, through: :editions
+
   has_many :works
   accepts_nested_attributes_for :works
   has_many :creator_authors, -> { where(kind: :author) }, class_name:  "Work"
@@ -29,5 +31,9 @@ class Game < ActiveRecord::Base
   scope :by_target, lambda { |target| where(:target => target)}
   scope :by_time, lambda { |time| where(:time => time)}
   scope :possible_extensions, -> { where(:base_game_id => nil) }
+
+  def base_game?
+    base_game_id.blank?
+  end
 
 end

@@ -42,6 +42,15 @@ body{
   border-bottom: 4px solid #10D530;
 }
 
+.thumbnail {
+  h3, h4{ margin-top: 0; text-align: center;}
+  ul { text-align: center; }
+}
+
+.listing {
+  .thumbnail { min-height: 220px; }
+}
+
 
 .horizontal{
   padding-right: 7px;

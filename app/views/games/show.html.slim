@@ -1,0 +1,34 @@
+.page-header
+  h2
+    = @game.name
+    small= (@game.editions.pluck(:name).uniq - [@game.name]) * ', '
+
+.col-lg-4
+  = image_tag @game.active_edition.box_front.image.normal.url, class: "box"
+
+.col-lg-8
+  = render 'technicals', game: @game
+  h3 Crée par
+  = render 'people', people: @game.authors
+  h3 Illustré par
+  = render 'people', people: @game.artists
+  h3 Edité par
+  .row.editors
+    = render @game.editors, format: :thumb
+  .row
+    .actions
+      = link_to "#", class: "btn-success btn" do
+        = icon_tag 'bookmark'
+        | Ajouter a mes jeux...
+      = dropdown_button_for("Modifier", kind_edit_game_path(@game, :general), class: "btn-info", icon: "icon-edit", split: true) do
+        li= link_to "Ajouter une edition", kind_edit_game_path(@game, :new_edition)
+        li= link_to "Gerer les editions", kind_edit_game_path(@game, :editions)
+        li= link_to "Gerer les extensions", kind_edit_game_path(@game, :extensions)
+
+- if @game.base_game?
+  h3.page-section Les extensions
+  - if @game.extensions.any?
+    .row
+      = render @game.extensions
+  - else
+    p.empty  #{@game.name} ne possede pas d'extensions pour le moment

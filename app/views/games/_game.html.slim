@@ -1,12 +1,6 @@
-div.col-lg-2.game
+div.col-lg-2
   div.thumbnail
-    = image_tag edition.box_front.image.normal.url
+    = image_tag local_assigns.fetch(:edition, game.active_edition).box_front.image.normal.url
     .caption
       h3 = link_to(game.name, game)
-      ul.list-inline
-        li = link_to "#", :rel => "tooltip", :title => game.time_text, "data-toggle" => "tooltip", "data-placement" => "bottom", "data-animation" => true do
-            i.icon-time
-        li = link_to "#", :rel => "tooltip", :title => "#{game.min} a #{game.max} joueurs", "data-toggle" => "tooltip", "data-placement" => "bottom", "data-animation" => true do
-            i.icon-user
-        li = link_to "#", :rel => "tooltip", :title => game.level_text, "data-toggle" => "tooltip", "data-placement" => "bottom", "data-animation" => true do
-            i.icon-signal
+      = render 'technicals', game: game

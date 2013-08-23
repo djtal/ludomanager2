@@ -1,0 +1,6 @@
+- if people.any?
+  ul.list-inline
+    - people.each do |a|
+      = link_to a.fullname, [a, Game]
+- else
+  Aucun Auteur/Illustrateur pour le moment...

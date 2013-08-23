@@ -1,0 +1,6 @@
+.col-lg-2
+  = link_to editor, class: "thumbnail", title: editor.name do
+    = image_tag(editor.logo.image.normal.url, :alt => editor.name)
+    - unless local_assigns.fetch(:thumb, true)
+      .caption
+        h3 = link_to(editor.name, editor_games_path(editor))
