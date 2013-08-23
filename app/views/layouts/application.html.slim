@@ -1,0 +1,44 @@
+doctype 5
+html
+  head
+    title = @title.presence || "Ludomanager"
+    = stylesheet_link_tag "application", media: :all
+    = javascript_include_tag "application"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+  body
+    nav.navbar.navbar-fixed-top.navbar-inverse#menu role="navigation"
+      .container
+        .navbar-header
+            button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"
+              span.sr-only Changer navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            =link_to "Ludomanager", root_path, class: "navbar-brand"
+        .collapse.navbar-collapse.navbar-ex1-collapse
+          ul.nav.navbar-nav
+            = menu_item("Les Jeux", games_path, :games)
+            - Game.target.options.each do |name, target|
+              = menu_item(name, target_games_path(target: target), "games_#{target}", dropdown: true, split: true) do
+                ul.dropdown-menu
+                  li= link_to "Tous", target_games_path(target: target)
+                  li.divider
+                  - Game.time.options.each do |name, time|
+                    li= link_to name, target_time_games_path(target: target, time: time)
+            = menu_item("Les Auteurs",people_path, :games)
+            = menu_item("Les Editeurs", editors_path, :editors)
+
+  #main.container
+    .row
+      = ariane.render
+
+    - if @page_title.present?
+      .page-header
+        h2= @page_title
+    .actions
+      = yield :navbar
+    = render "shared/flashes"
+    = yield
+    footer
+    p
+    | &copy; Dj T@l 2013

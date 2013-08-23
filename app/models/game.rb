@@ -19,7 +19,7 @@ class Game < ActiveRecord::Base
   has_many :creator_authors, -> { where(kind: :author) }, class_name:  "Work"
   has_many :creator_artists, -> { where(kind: :artist) }, class_name: "Work"
   has_many :authors, :through => :creator_authors, :source => :person
-  accepts_nested_attributes_for :authors
+  accepts_nested_attributes_for :authors, reject_if: proc { |attributes| attributes['id'].blank? }
   has_many :artists, :through => :creator_artists, :source => :person
   accepts_nested_attributes_for :artists
 
