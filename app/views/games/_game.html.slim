@@ -1,5 +1,8 @@
 div.col-lg-2
   = link_to game, class: "thumbnail box" do
+    - if game.is_extension?
+      .ribbon-wrapper-green
+        .ribbon-green extension
     = image_tag local_assigns.fetch(:edition, game.active_edition).box_front.image.normal.url
     .caption
       h3= game.name

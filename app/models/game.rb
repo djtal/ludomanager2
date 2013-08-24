@@ -36,4 +36,8 @@ class Game < ActiveRecord::Base
     base_game_id.blank?
   end
 
+  def is_extension?
+    !base_game?
+  end
+
 end
