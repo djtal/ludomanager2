@@ -21,7 +21,7 @@
     = link_to_button "Modifier", edit_person_path(@person), icon: "edit"
 
 - if @games.any?
-  .row
+  .row.listing
     - @games.each do |game|
         = render game, edition: game.active_edition
 - else

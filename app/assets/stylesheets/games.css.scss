@@ -8,11 +8,17 @@
 
 h3.page-section { margin-bottom: 10px; border-bottom: solid 1px #EEE}
 
-#technical{font-size: 2em;}
-
-.box{
-  @include box-shadow(0 0 5px 3px $smoke);
+.technical {
+  li {
+    font-size: 1.2em;
+  }
+  & :hover {
+    color: #10D530;
+    text-shadow: 0px 0px 9px $smoke;
+  }
 }
+#description .technical{ font-size: 1.3em; }
+
 
 .header{
   .title{ font-size:2em; display:block;}

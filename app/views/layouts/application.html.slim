@@ -29,9 +29,6 @@ html
             = menu_item("Les Editeurs", editors_path, :editors)
 
   #main.container
-    .row
-      = ariane.render
-
     - if @page_title.present?
       .page-header
         h2= @page_title
@@ -40,5 +37,4 @@ html
     = render "shared/flashes"
     = yield
     footer
-    p
-    | &copy; Dj T@l 2013
+      | &copy; Dj T@l 2013

@@ -1,6 +1,12 @@
+- format = local_assigns.fetch(:format, :regular)
+- options = options_for_editor_popover(format, editor, local_assigns[:editions], class: "thumbnail") do |ed|
+  ul
+    - ed.each do |e|
+      li #{e.name} en #{e.out_date.year}
 .col-lg-2
-  = link_to editor, class: "thumbnail", title: editor.name do
+  = link_to [editor, Game], options do
     = image_tag(editor.logo.image.normal.url, :alt => editor.name)
-    - unless local_assigns.fetch(:thumb, true)
+    - if :regular ==  format
       .caption
-        h3 = link_to(editor.name, editor_games_path(editor))
+        h3= editor.name
+

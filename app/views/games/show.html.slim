@@ -6,15 +6,15 @@
 .col-lg-4
   = image_tag @game.active_edition.box_front.image.normal.url, class: "box"
 
-.col-lg-8
-  = render 'technicals', game: @game
-  h3 Crée par
+.col-lg-8#description
+  = render 'technicals', game: @game, format: :full
+  h4 Un jeu de
   = render 'people', people: @game.authors
-  h3 Illustré par
+  h4 Illustré par
   = render 'people', people: @game.artists
-  h3 Edité par
+  h4 Edité par
   .row.editors
-    = render @game.editors, format: :thumb
+    = render @game.editors.uniq, format: :thumb, editions: @game.editions
   .row
     .actions
       = link_to "#", class: "btn-success btn" do
@@ -28,7 +28,7 @@
 - if @game.base_game?
   h3.page-section Les extensions
   - if @game.extensions.any?
-    .row
+    .row.listing
       = render @game.extensions
   - else
     p.empty  #{@game.name} ne possede pas d'extensions pour le moment
