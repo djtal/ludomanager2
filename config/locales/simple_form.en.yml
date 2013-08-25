@@ -11,14 +11,13 @@ en:
     error_notification:
       default_message: "Please review the problems below:"
     # Labels and hints examples
-    # labels:
-    #   defaults:
-    #     password: 'Password'
-    #   user:
-    #     new:
-    #       email: 'E-mail to sign in.'
-    #     edit:
-    #       email: 'E-mail.'
+      labels:
+        defaults:
+          name: Nom
+        game:
+          base_game_id: Jeu de base
+          min: Joueurs Min
+          max: Joueurs Max
     # hints:
     #   defaults:
     #     username: 'User name to sign in.'

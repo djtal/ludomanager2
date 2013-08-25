@@ -1,4 +1,4 @@
-= simple_form_for @game, html: { class: "form-horizontal" } do |f|
+= simple_form_for @game do |f|
 
   fieldset.well
     legend Le jeu
@@ -32,10 +32,13 @@
     = f.input :author_ids, label_html: { class: "col-lg-2" } do
       .col-lg-4
         = f.input_field :author_ids, collection: Person.all, label_method: :fullname, multiple: true, include_hidden: false
+    = f.input :artist_ids, label_html: { class: "col-lg-2" } do
+      .col-lg-4
+        = f.input_field :artist_ids, collection: Person.all, label_method: :fullname, multiple: true, include_hidden: false
 
-  - if @edition
-    = f.fields_for :editions, @edition do |fe|
-      = render "editions/form", :form => fe, :edition => @edition
+  - if f.object.new_record? && @edition
+      = f.fields_for :editions, @edition do |fe|
+        = render "editions/form", :form => fe, :edition => @edition
 
   = f.button :submit, :value => "Creer", :class => "btn-primary"
   = link_to "Annuler", games_path, :class => "btn"
