@@ -31,6 +31,7 @@ class Game < ActiveRecord::Base
   scope :by_target, lambda { |target| where(:target => target)}
   scope :by_time, lambda { |time| where(:time => time)}
   scope :possible_extensions, -> { where(:base_game_id => nil) }
+  scope :base_games, -> { where(base_game_id: nil)}
 
   def base_game?
     base_game_id.blank?

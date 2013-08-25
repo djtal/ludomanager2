@@ -3,7 +3,7 @@
   ul
     - ed.each do |e|
       li #{e.name} en #{e.out_date.year}
-.col-lg-2
+.col-lg-2.thumb
   = link_to [editor, Game], options do
     = image_tag(editor.logo.image.normal.url, :alt => editor.name)
     - if :regular ==  format
