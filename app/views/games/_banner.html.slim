@@ -1,0 +1,11 @@
+- image = resource.try(:logo)
+.thumb-banner.col-lg-4
+  - if image
+    = image_tag image.image.normal.url
+    - if resource.url.present?
+      = link_to "Site web de l'editeur", resource.url, :class => "icon-home"
+  .row
+    .col-lg-6
+      = link_to_button "Modifier", [:edit, resource], icon: "edit", class: "btn-default btn-sm"
+    .col-lg-6
+      = link_to_button "Nouveau jeu", [:new, resource, :game], icon: "gamepad", class:"btn-info btn-sm"

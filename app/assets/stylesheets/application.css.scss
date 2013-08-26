@@ -82,6 +82,12 @@ h1, h2 { font-family: 'Nobile', sans-serif; color: $violet;}
 a.thumbnail:hover, a.thumbnail:focus {
   border-color: $green;
 }
+.thumb-banner {
+  h2 {
+    color: $violet;
+    margin-top: 0;
+  }
+}
 
 .box{
   &:hover {

@@ -1,27 +1,8 @@
-- if @editor
-  .row.header
-    .col-lg-4
-      = image_tag @editor.logo.image.normal.url
-    .col-lg-8
-      .row
-        .col-lg-4
-          .title= @editor.name
-        .col-lg-1.col-lg-offset-2
-      .row
-      - if @editor.url.present?
-        = link_to "Site web de l'editeur", @editor.url, :class => "icon-home"
-      = link_to_button "Modifier", edit_editor_path(@editor), icon: "edit"
-      = link_to_button "Nouveau jeu", new_editor_game_path(@editor), icon: "file"
-      - unless @editor.editions.any?
-        = link_to_button "Supprimer", editor_path(@editor), :method => :delete, icon: "trash"
-- if @person
-  .row.header
-    .col-lg-12
-      span.title= @person.fullname
-    = link_to_button "Modifier", edit_person_path(@person), icon: "edit"
 
 - if @games.any?
   .row.listing
+    - if @editor || @person
+      = render "banner", resource: @person || @editor
     - @games.each do |game|
         = render game, edition: game.active_edition
 - else
