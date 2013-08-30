@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20120520101326) do
+ActiveRecord::Schema.define(version: 20130830194757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20120520101326) do
     t.date    "out_date"
     t.string  "kind"
     t.string  "name"
+    t.integer "old_id"
   end
 
   create_table "editors", force: true do |t|
@@ -64,6 +65,7 @@ ActiveRecord::Schema.define(version: 20120520101326) do
     t.string  "lang"
     t.integer "country_id"
     t.string  "logo"
+    t.integer "old_id"
   end
 
   create_table "games", force: true do |t|
@@ -78,6 +80,7 @@ ActiveRecord::Schema.define(version: 20120520101326) do
     t.integer  "base_game_id"
     t.boolean  "standalone",        default: false
     t.integer  "active_edition_id"
+    t.integer  "old_id"
   end
 
   create_table "images", force: true do |t|
@@ -94,6 +97,7 @@ ActiveRecord::Schema.define(version: 20120520101326) do
     t.integer  "country_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "old_id"
   end
 
   create_table "works", force: true do |t|
