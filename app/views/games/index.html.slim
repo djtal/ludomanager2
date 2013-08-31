@@ -1,13 +1,13 @@
 
-- if @games.any?
-  .row.listing
-    - if @editor || @person
-      = render "banner", resource: @person || @editor
+.row.listing
+  - if @editor || @person
+    = render "banner", resource: @person || @editor
+  - if @games.any?
     - @games.each do |game|
-        = render game, edition: game.active_edition
-- else
-  p.empty
-    Aucun jeux #{@editor || @person ? "pour #{@editor.name.humanize}" : ""}
+      = render game, edition: game.active_edition
+  - else
+    p.empty
+      Aucun jeux #{@editor || @person ? "pour #{@editor.name.humanize}" : ""}
 
 - unless @editor || @person
   - content_for :navbar do

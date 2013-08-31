@@ -21,8 +21,6 @@
 @import "ribbon";
 @import "games";
 @import "editors";
-@import "flags16";
-@import "flags32";
 
 @import url(http://fonts.googleapis.com/css?family=Nobile:400,400italic,700,700italic);
 
@@ -61,6 +59,9 @@ h1, h2 { font-family: 'Nobile', sans-serif; color: $violet;}
     text-align: center;
     font-size: 1.3em;
     color: $violet;
+  }
+  .caption {
+    min-height: 90px;
   }
   .technical {
     position: absolute;
