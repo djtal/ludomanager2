@@ -101,6 +101,7 @@ GEM
       subexec (~> 0.2.1)
     minitest (4.7.5)
     multi_json (1.7.9)
+    mysql2 (0.3.13)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-ssh (2.6.8)
@@ -195,6 +196,7 @@ DEPENDENCIES
   jquery-rails
   map_by_method
   mini_magick
+  mysql2
   pg
   quiet_assets
   rails (~> 4.0.0)

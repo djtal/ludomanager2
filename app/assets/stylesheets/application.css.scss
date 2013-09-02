@@ -12,6 +12,7 @@
  *= require bootstrap.min
  *= require select2
  *= require select2-bootstrap
+ *= require flags32
  *= require_self
 */
 
@@ -60,7 +61,7 @@ h1, h2 { font-family: 'Nobile', sans-serif; color: $violet;}
     font-size: 1.3em;
     color: $violet;
   }
-  .caption {
+  .caption h3 {
     min-height: 90px;
   }
   .technical {

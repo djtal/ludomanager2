@@ -7,6 +7,7 @@ gem 'rails', '~> 4.0.0'
 
 
 gem 'pg'
+gem "mysql2" #for importing data
 gem 'enumerize'
 gem 'carrierwave'
 gem 'mini_magick'

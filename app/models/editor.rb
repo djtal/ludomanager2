@@ -1,6 +1,6 @@
 class Editor < ActiveRecord::Base
   has_many :editions
-  has_one :country
+  belongs_to :country
 
   has_many :games, :through => :editions
   validates_presence_of :name, :country_id
