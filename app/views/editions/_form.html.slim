@@ -10,9 +10,9 @@ fieldset.well
   = form.input :out_date, label_html: { class: "col-lg-2" } do
     .col-lg-4
       = form.input_field :out_date, discard_day: true, as: :date, class: "col-lg-1"
-  = form.input :lang, label_html: { class: "col-lg-2" } do
+  = form.input :country_ids, label_html: { class: "col-lg-2" } do
     div.col-lg-4
-      = form.input_field :lang, collection: Country.all
+      = form.input_field :country_ids, multiple: true, collection: Country.all
   = form.input :kind, label_html: { class: "col-lg-2" } do
     .col-lg-4
       = form.input_field :kind, collection: Edition.kind.options

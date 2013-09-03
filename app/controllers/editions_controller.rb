@@ -8,10 +8,10 @@ class EditionsController < ApplicationController
 
     respond_to do |format|
       if @edition.save
-        format.html { redirect_to @edition.game, notice: 'Edition was successfully created.' }
+        format.html { redirect_to kind_edit_game_path(@game, :editions), notice: 'Edition was successfully updated.' }
         format.json { render json: @edition, status: :created, location: @edition }
       else
-        format.html { render action: "new" }
+        format.html { render action: "edit", controller: "games" }
         format.json { render json: @edition.errors, status: :unprocessable_entity }
       end
     end
@@ -70,7 +70,7 @@ class EditionsController < ApplicationController
   private
 
   def edition_params
-    params.require(:edition).permit(:game_id, :id, :editor_id, :out_date, :lang, :kind, :plateform, :name,
+    params.require(:edition).permit(:game_id, :id, :editor_id, :out_date, :kind, :plateform, :name, country_ids: [],
                                   :box_front_attributes => [:id, :image, :remote_image_url, :_destroy])
   end
 

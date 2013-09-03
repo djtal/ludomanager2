@@ -17,7 +17,7 @@ table.table.table-striped.games
         td
           #{edition.name}
           = active_edition_tag(edition)
-        td = edition.country.name
+        td = Country.where(id: edition.country_ids).pluck(:name) * ", "
         td = link_to edition.editor.name, editor_games_path(edition.editor)
         td = edition.kind.text
         td = l edition.out_date, format: :simple
