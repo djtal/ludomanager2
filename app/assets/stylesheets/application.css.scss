@@ -13,6 +13,7 @@
  *= require select2
  *= require select2-bootstrap
  *= require flags32
+ *= require flags16
  *= require_self
 */
 
@@ -122,6 +123,14 @@ a.thumbnail:hover, a.thumbnail:focus {
   > li + li:before { content: ""; }
 
   .divider { margin-left: 3px; }
+}
+
+[class^="flag"], [class*=" flag"] {
+  display: inline-block;
+  line-height: normal;
+  vertical-align: baseline;
+  background-repeat: repeat;
+  margin-top: 0;
 }
 
 /* Forms */
