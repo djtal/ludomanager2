@@ -24,6 +24,7 @@ class GamesController < ApplicationController
       scoped = scoped.where(:time => params[:time])
       ariane.add(Game.time.find_value(params[:time]).text, time_games_path(params[:time]))
     end
+    scoped = scoped.includes(active_edition: :box_front)
     @games = scoped.paginate(:per_page => 20, :page => params[:page])
     @page_title = @title
     respond_to do |format|
@@ -35,8 +36,9 @@ class GamesController < ApplicationController
   # GET /games/1
   # GET /games/1.json
   def show
-    @game = Game.joins(:editions).find_by_id(params[:id])
+    @game = Game.includes(:editions,  active_edition: :box_front ).find_by_id(params[:id])
     @title = @game.name
+    @related = @game.related.includes(active_edition: :box_front)
     ariane.add @game.name, game_path(@game)
     respond_to do |format|
       format.html # show.html.erb
@@ -154,7 +156,7 @@ class GamesController < ApplicationController
   end
 
   def game_params
-    params.require(:game).permit(:name, :min, :max, :base_game_id, :time, :target, :level, author_ids: [],
+    params.require(:game).permit(:name, :min, :max, :familly, :base_game_id, :time, :target, :level, author_ids: [],
                                  :editions_attributes => [:name, :game_id, :editor_id, :out_date, :lang, :kind, :plateform, :id,
                                  :box_front_attributes => [:remote_image_url]])
   end

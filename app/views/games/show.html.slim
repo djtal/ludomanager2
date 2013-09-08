@@ -32,3 +32,11 @@
       = render @game.extensions
   - else
     p.empty  #{@game.name} ne possede pas d'extensions pour le moment
+
+
+- if @related.present?
+  h3 Les jeux de la famille #{@game.familly}
+  .row.listing
+    = render @related
+
+

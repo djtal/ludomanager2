@@ -3,8 +3,12 @@
   fieldset.well
     legend Le jeu
     = f.input :name, label_html: { class: "col-lg-2" } do
-        .col-lg-4
-          = f.input_field :name
+      .col-lg-4
+        = f.input_field :name
+
+    = f.input :familly, label_html: { class: "col-lg-2" } do
+      .col-lg-4
+        = f.input_field :familly
 
     = f.input :base_game_id, label_html: { class: "col-lg-2"}  do
       .col-lg-4

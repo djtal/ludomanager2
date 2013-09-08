@@ -32,6 +32,7 @@ class Game < ActiveRecord::Base
   scope :by_time, lambda { |time| where(:time => time)}
   scope :possible_extensions, -> { where(:base_game_id => nil) }
   scope :base_games, -> { where(base_game_id: nil)}
+  scope :related, lambda { |familly| familly.present? ? where(familly: familly ) : none }
 
   def base_game?
     base_game_id.blank?
@@ -39,6 +40,10 @@ class Game < ActiveRecord::Base
 
   def is_extension?
     !base_game?
+  end
+
+  def related
+    self.class.related(self.familly).where.not(id: id)
   end
 
 end
