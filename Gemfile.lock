@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git://github.com/rails/rails.git
-  revision: 025b63db308fbbf942a3bc2673d4aadab968c524
+  revision: 3b64d5bac59470ba9ec6bc0fd378da58456882ac
   branch: 4-0-stable
   specs:
     actionmailer (4.0.0)
@@ -124,11 +124,11 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     map_by_method (0.8.3)
-    mime-types (1.23)
+    mime-types (1.25)
     mini_magick (3.6.0)
       subexec (~> 0.2.1)
     minitest (4.7.5)
-    multi_json (1.7.9)
+    multi_json (1.8.0)
     mysql2 (0.3.13)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)

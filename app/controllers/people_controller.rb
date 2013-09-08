@@ -2,7 +2,7 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
-    @people = Person.order(:first_name => :asc).all
+    @people = Person.order(:first_name => :asc).paginate(per_page: 50, page: params[:page])
 
     ariane.add "Les Createurs", people_path
     @page_title = "Les créateurs : Auteurs & Illustrateurs"

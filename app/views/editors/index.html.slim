@@ -1,6 +1,5 @@
 #editors.row.listing
-  - @editors.each do |editor|
-    = render editor
+  = render @editors
 
 - content_for :navbar do
   = link_to new_editor_path, :class => "btn btn-info btn-sm" do

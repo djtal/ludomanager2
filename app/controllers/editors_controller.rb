@@ -2,7 +2,7 @@ class EditorsController < ApplicationController
   # GET /editors
   # GET /editors.json
   def index
-    @editors = Editor.order("LOWER(name) asc").all
+    @editors = Editor.reorder("LOWER(name) asc").includes(:logo, :country).paginate(per_page: 50, page: params[:page])
     @title = "Tous les editeurs"
     @page_title = @title
     respond_to do |format|
