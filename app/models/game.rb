@@ -1,5 +1,8 @@
 class Game < ActiveRecord::Base
   extend Enumerize
+  include Tire::Model::Search
+  include Tire::Model::Callbacks
+
 
 
   validates :name, :presence => true
@@ -9,7 +12,7 @@ class Game < ActiveRecord::Base
   enumerize :target, :in => [:children, :all, :casual, :gamer], :default => :all
   enumerize :time, :in => [:halfhour, :onehour, :onehourhalf, :twohour, :morethantwo], :default => :onehour
 
-  has_many :editions
+  has_many :editions, dependent: :destroy
   accepts_nested_attributes_for :editions
   belongs_to :active_edition, :class_name => "Edition"
   accepts_nested_attributes_for :active_edition
@@ -18,8 +21,8 @@ class Game < ActiveRecord::Base
 
   has_many :works
   accepts_nested_attributes_for :works
-  has_many :creator_authors, -> { where(kind: :author) }, class_name:  "Work"
-  has_many :creator_artists, -> { where(kind: :artist) }, class_name: "Work"
+  has_many :creator_authors, -> { where(kind: :author) }, class_name:  "Work", dependent: :destroy
+  has_many :creator_artists, -> { where(kind: :artist) }, class_name: "Work", dependent: :destroy
   has_many :authors, :through => :creator_authors, :source => :person
   accepts_nested_attributes_for :authors, reject_if: proc { |attributes| attributes['id'].blank? }
   has_many :artists, :through => :creator_artists, :source => :person

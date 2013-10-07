@@ -24,8 +24,8 @@ class GamesController < ApplicationController
       scoped = scoped.where(:time => params[:time])
       ariane.add(Game.time.find_value(params[:time]).text, time_games_path(params[:time]))
     end
-    scoped = scoped.includes(active_edition: :box_front)
-    @games = scoped.paginate(:per_page => 20, :page => params[:page])
+    scoped = scoped.includes(active_edition: :box_front).order("name asc")
+    @games = scoped.paginate(:per_page => 24, :page => params[:page])
     @page_title = @title
     respond_to do |format|
       format.html # index.html.erb
