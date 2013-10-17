@@ -59,9 +59,15 @@ module Legacy
               img = edition.build_box_front
               filepath = Dir["#{Rails.root.join("tmp/legacy/system/boxes/#{g.id}/original")}/*.*"].first
               img.image = File.open(filepath) if filepath && File.readable?(filepath)
+            else
+              img = edition.build_box_front
             end
           end
         end
+      end
+      people = Person.where(old_id: LegacyAuthorship.where(game_id: g.id).pluck(:author_id))
+      if people.any?
+        game.authors = people
       end
       unless g.editions.any?
         edition = game.editions.find_or_initialize_by(editor_id: DEFAULT_EDITOR_ID)
