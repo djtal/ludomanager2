@@ -1,0 +1,7 @@
+fr:
+  activerecord:
+    models:
+      game: jeux
+    attributes:
+      game:
+        name: "nom"

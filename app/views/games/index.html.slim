@@ -1,4 +1,8 @@
+- content_for :pagination
+  = will_paginate @games, renderer: BootstrapLinkRenderer
 
+.pagination-info
+  = content_for(:pagination) if content_for?(:pagination)
 .row.listing
   - if @editor || @person
     = render "banner", resource: @person || @editor
@@ -8,6 +12,8 @@
   - else
     p.empty
       Aucun jeux #{@editor || @person ? "pour #{@editor.name.humanize}" : ""}
+.pagination-info
+  = content_for(:pagination) if content_for?(:pagination)
 
 - unless @editor || @person
   - content_for :navbar do
