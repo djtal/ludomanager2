@@ -78,6 +78,6 @@ module Legacy
         game.update_attribute :active_edition_id, game.editions.first.id
       end
     end
-
+    Edition.all.select { |e| if e.box_front == nil; e.build_box_front; e.save; end }.size
   end
 end

@@ -7,7 +7,7 @@ gem 'rails', github: "rails/rails", branch: "4-0-stable"
 
 
 gem 'pg'
-# gem "mysql2" #for importing data
+gem "mysql2" #for importing data
 gem 'enumerize'
 gem 'carrierwave'
 gem 'mini_magick'
@@ -57,6 +57,8 @@ gem 'devise'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
+
+gem "json", "~> 1.8.1"
 
 
 # Deploy with Capistrano
