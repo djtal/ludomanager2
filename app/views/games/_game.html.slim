@@ -6,7 +6,7 @@ div.col-lg-2.thumb
     = image_tag local_assigns.fetch(:edition, game.active_edition).box_front.image.normal.url
     .caption
       h3= game.name
-      = render 'technicals', game: game
+      = render 'games/technicals', game: game
       .buttons
         .pull-right(data-game-id=game.id)
           = icon_tag 'bookmark'
